@@ -1,46 +1,52 @@
 #!/bin/bash
 
-# Alap könyvtár létrehozása
-mkdir -p ModularWebApp && cd ModularWebApp
-
-echo "📁 Projektstruktúra létrehozása..."
+echo "📁 Gyökérstruktúra létrehozása..."
+mkdir -p ModularWebApp/{frontend,backend,shared/frontend/core.frontend.package,shared/frontend/ui.frontend.package,shared/backend/core.backend.package}
+cd ModularWebApp
 
 # 1. Backend microservice-ek
 echo "🚀 Backend szolgáltatások létrehozása..."
-dotnet new sln -n ModularWebApp
-
-for service in panaszkezelo szerzodeskezelo ugyfelkezelo identity storage
+cd backend
+for service in panaszkezelo-api szerzodeskezelo-api ugyfelkezelo-api identity-api storage-api
 do
-  dotnet new webapi -n ${service}-api
-  dotnet sln add ${service}-api/${service}-api.csproj
+  dotnet new webapi -n $service
 done
+cd ..
 
-# 2. Backend közös könyvtár
+# 2. Közös backend csomag
 echo "🧱 Közös backend könyvtár létrehozása..."
-dotnet new classlib -n core.backend.package
-dotnet sln add core.backend.package/core.backend.package.csproj
+cd shared/backend/core.backend.package
+dotnet new classlib -n Core.Backend.Package
+cd ../../..
 
-# 3. Frontend Angular host alkalmazás
-echo "🌐 Angular host alkalmazás létrehozása..."
+# 3. Angular frontend alkalmazások – host + remote modulok
+echo "🌐 Angular frontend alkalmazások létrehozása..."
+cd frontend
+
 npm install -g @angular/cli
-ng new host --routing --style=scss
+
+# Host létrehozása
+ng new host --routing --style=scss --directory=host --standalone=false
 cd host
 ng add @angular-architects/module-federation --project host --type host --port 4200
 cd ..
 
-# 4. Angular remote alkalmazások
-echo "🌐 Angular remote alkalmazások létrehozása..."
-for frontend in panaszkezelo szerzodeskezelo ugyfelkezelo
+# Remote frontendek
+for remote in panaszkezelo szerzodeskezelo ugyfelkezelo
 do
-  ng new $frontend --routing --style=scss
-  cd $frontend
-  ng add @angular-architects/module-federation --project $frontend --type remote --host host --port $((RANDOM % 1000 + 4201))
+  ng new $remote --routing --style=scss --directory=$remote --standalone=false
+  cd $remote
+  ng add @angular-architects/module-federation --project $remote --type remote --host host --port $((RANDOM % 1000 + 4300))
   cd ..
 done
+cd ..
 
-# 5. Frontend közös könyvtárak
-echo "🧰 Frontend közös könyvtárak létrehozása..."
-mkdir -p shared/frontend/core.frontend.package
-mkdir -p shared/frontend/ui.frontend.package
+# 4. Közös frontend csomag struktúra létrehozása
+echo "🧰 Frontend közös könyvtárak létrehozása (npm init)..."
+cd shared/frontend/core.frontend.package
+npm init -y
+cd ../ui.frontend.package
+npm init -y
+cd ../../../..
 
-echo "✅ Kész! A projektstruktúra generálása sikeresen befejeződött."
+echo "✅ A moduláris projektstruktúra sikeresen létrehozva."
