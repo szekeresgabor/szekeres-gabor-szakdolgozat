@@ -1,0 +1,6 @@
+@szerzodeskezelo_api_HostAddress = http://localhost:5137
+
+GET {{szerzodeskezelo_api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
