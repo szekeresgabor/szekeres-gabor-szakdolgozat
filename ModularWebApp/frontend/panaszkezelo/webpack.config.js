@@ -5,7 +5,7 @@ module.exports = withModuleFederationPlugin({
   name: 'panaszkezelo',
 
   exposes: {
-    './Component': './src/app/app.component.ts',
+    './Module': './src/app/app.module.ts',
   },
 
   shared: {

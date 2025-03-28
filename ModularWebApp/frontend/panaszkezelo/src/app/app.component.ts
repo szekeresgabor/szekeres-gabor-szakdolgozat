@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-panaszkezelo-root',
   templateUrl: './app.component.html',
   standalone: false,
   styleUrl: './app.component.scss'
