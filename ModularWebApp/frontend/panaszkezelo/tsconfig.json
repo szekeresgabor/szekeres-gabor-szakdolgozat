@@ -14,7 +14,15 @@
     "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
-    "module": "ES2022"
+    "module": "ES2022",
+    "paths": {
+      "core.frontend.package": [
+        "../../shared/frontend/shared-frontend/projects/core-frontend-package/src/public-api.ts"
+      ],
+      "ui.frontend.package": [
+        "../../shared/frontend/shared-frontend/projects/ui-frontend-package/src/public-api.ts"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
