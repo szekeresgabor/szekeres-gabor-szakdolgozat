@@ -1,27 +1,39 @@
+using NSwag.CodeGeneration.TypeScript;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+// Szolgáltatások regisztrációja
 builder.Services.AddOpenApi();
-
-//Swagger szolgáltatás regisztrációja
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddOpenApiDocument(options =>
+{
+    options.Title = "Panaszkezelo API Dokumentáció";
+    options.Version = "v1";
+    options.PostProcess = apiDocument =>
+    {
+        var clientGenerator = new TypeScriptClientGenerator(apiDocument,
+            new TypeScriptClientGeneratorSettings { GenerateDtoTypes = true, GenerateClientClasses = false });
 
+        var outputPath = Path.Combine(
+            AppContext.BaseDirectory,
+            "..", "..", "..", "..", "..", "frontend", "panaszkezelo", "src", "app", "generated", "panaszkezelo-api.ts");
+
+        var fullPath = Path.GetFullPath(outputPath);
+
+        File.WriteAllText(fullPath, clientGenerator.GenerateFile());
+    };
+});
 var app = builder.Build();
 
-// Swagger middleware regisztrációja csak development környezetben
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(); // Alap URL: /swagger
-}
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+    app.UseOpenApi();
+    app.UseSwaggerUi(); // NSwag saját Swagger UI-t használ
     app.MapOpenApi();
 }
+
+app.MapControllers();
 
 app.UseHttpsRedirection();
 
