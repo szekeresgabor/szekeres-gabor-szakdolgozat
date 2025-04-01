@@ -1,4 +1,5 @@
 using NSwag.CodeGeneration.TypeScript;
+using Winton.Extensions.Configuration.Consul;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +33,18 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUi(); // NSwag saját Swagger UI-t használ
     app.MapOpenApi();
 }
+
+builder.Configuration.AddConsul(
+    "appsettings/szerzodeskezelo-api",
+    options =>
+    {
+        options.ConsulConfigurationOptions =
+            cco => { cco.Address = new Uri("http://localhost:8500"); };
+
+        options.Optional = false;
+        options.ReloadOnChange = true;
+        options.Parser = new Winton.Extensions.Configuration.Consul.Parsers.SimpleConfigurationParser();
+    });
 
 app.MapControllers();
 

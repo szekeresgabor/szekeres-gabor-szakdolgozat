@@ -61,6 +61,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[14.3.0, )"
+            },
+            "Winton.Extensions.Configuration.Consul": {
+              "target": "Package",
+              "version": "[3.4.0, )"
             }
           },
           "imports": [

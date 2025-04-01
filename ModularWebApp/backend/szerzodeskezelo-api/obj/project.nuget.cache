@@ -1,15 +1,23 @@
 {
   "version": 2,
-  "dgSpecHash": "Bk0Dz4U+6Rk=",
+  "dgSpecHash": "WywTgDODPk8=",
   "success": true,
   "projectFilePath": "/Users/szekeresgabor/Projects/szekeres-gabor-szakdolgozat/ModularWebApp/backend/szerzodeskezelo-api/szerzodeskezelo-api.csproj",
   "expectedPackageFiles": [
+    "/Users/szekeresgabor/.nuget/packages/consul/1.6.10.8/consul.1.6.10.8.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/fluid.core/2.21.0/fluid.core.2.21.0.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/microsoft.aspnetcore.openapi/9.0.3/microsoft.aspnetcore.openapi.9.0.3.nupkg.sha512",
+    "/Users/szekeresgabor/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/microsoft.extensions.apidescription.server/6.0.3/microsoft.extensions.apidescription.server.6.0.3.nupkg.sha512",
+    "/Users/szekeresgabor/.nuget/packages/microsoft.extensions.configuration/3.0.0/microsoft.extensions.configuration.3.0.0.nupkg.sha512",
+    "/Users/szekeresgabor/.nuget/packages/microsoft.extensions.configuration.abstractions/3.0.0/microsoft.extensions.configuration.abstractions.3.0.0.nupkg.sha512",
+    "/Users/szekeresgabor/.nuget/packages/microsoft.extensions.configuration.fileextensions/3.0.0/microsoft.extensions.configuration.fileextensions.3.0.0.nupkg.sha512",
+    "/Users/szekeresgabor/.nuget/packages/microsoft.extensions.configuration.json/3.0.0/microsoft.extensions.configuration.json.3.0.0.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/9.0.0/microsoft.extensions.dependencyinjection.abstractions.9.0.0.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/microsoft.extensions.fileproviders.abstractions/9.0.0/microsoft.extensions.fileproviders.abstractions.9.0.0.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/microsoft.extensions.fileproviders.embedded/9.0.0/microsoft.extensions.fileproviders.embedded.9.0.0.nupkg.sha512",
+    "/Users/szekeresgabor/.nuget/packages/microsoft.extensions.fileproviders.physical/3.0.0/microsoft.extensions.fileproviders.physical.3.0.0.nupkg.sha512",
+    "/Users/szekeresgabor/.nuget/packages/microsoft.extensions.filesystemglobbing/3.0.0/microsoft.extensions.filesystemglobbing.3.0.0.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/microsoft.extensions.options/9.0.0/microsoft.extensions.options.9.0.0.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/microsoft.extensions.primitives/9.0.0/microsoft.extensions.primitives.9.0.0.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/microsoft.openapi/1.6.17/microsoft.openapi.1.6.17.nupkg.sha512",
@@ -32,6 +40,7 @@
     "/Users/szekeresgabor/.nuget/packages/nswag.msbuild/14.3.0/nswag.msbuild.14.3.0.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/parlot/1.3.5/parlot.1.3.5.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/timezoneconverter/7.0.0/timezoneconverter.7.0.0.nupkg.sha512",
+    "/Users/szekeresgabor/.nuget/packages/winton.extensions.configuration.consul/3.4.0/winton.extensions.configuration.consul.3.4.0.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/yamldotnet/16.3.0/yamldotnet.16.3.0.nupkg.sha512"
   ],
   "logs": []
