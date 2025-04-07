@@ -1,19 +1,20 @@
 {
   "version": 2,
-  "dgSpecHash": "KsphZvJU3P0=",
+  "dgSpecHash": "c1GjH5FQXgg=",
   "success": true,
   "projectFilePath": "/Users/szekeresgabor/Projects/szekeres-gabor-szakdolgozat/ModularWebApp/shared/backend/core.backend.package/Core.Backend.Package/Core.Backend.Package.csproj",
   "expectedPackageFiles": [
     "/Users/szekeresgabor/.nuget/packages/fluentvalidation/11.11.0/fluentvalidation.11.11.0.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/microsoft.aspnetcore.http/2.3.0/microsoft.aspnetcore.http.2.3.0.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/microsoft.aspnetcore.http.abstractions/2.3.0/microsoft.aspnetcore.http.abstractions.2.3.0.nupkg.sha512",
-    "/Users/szekeresgabor/.nuget/packages/microsoft.aspnetcore.http.features/2.3.0/microsoft.aspnetcore.http.features.2.3.0.nupkg.sha512",
+    "/Users/szekeresgabor/.nuget/packages/microsoft.aspnetcore.http.features/5.0.17/microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/microsoft.aspnetcore.webutilities/2.3.0/microsoft.aspnetcore.webutilities.2.3.0.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/microsoft.entityframeworkcore/9.0.3/microsoft.entityframeworkcore.9.0.3.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/microsoft.entityframeworkcore.abstractions/9.0.3/microsoft.entityframeworkcore.abstractions.9.0.3.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/microsoft.entityframeworkcore.analyzers/9.0.3/microsoft.entityframeworkcore.analyzers.9.0.3.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/microsoft.extensions.caching.abstractions/9.0.3/microsoft.extensions.caching.abstractions.9.0.3.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/microsoft.extensions.caching.memory/9.0.3/microsoft.extensions.caching.memory.9.0.3.nupkg.sha512",
+    "/Users/szekeresgabor/.nuget/packages/microsoft.extensions.configuration.abstractions/9.0.3/microsoft.extensions.configuration.abstractions.9.0.3.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/microsoft.extensions.dependencyinjection/9.0.3/microsoft.extensions.dependencyinjection.9.0.3.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/9.0.3/microsoft.extensions.dependencyinjection.abstractions.9.0.3.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/microsoft.extensions.logging/9.0.3/microsoft.extensions.logging.9.0.3.nupkg.sha512",
@@ -28,6 +29,7 @@
     "/Users/szekeresgabor/.nuget/packages/microsoft.net.http.headers/2.3.0/microsoft.net.http.headers.2.3.0.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/system.buffers/4.6.0/system.buffers.4.6.0.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/system.identitymodel.tokens.jwt/8.7.0/system.identitymodel.tokens.jwt.8.7.0.nupkg.sha512",
+    "/Users/szekeresgabor/.nuget/packages/system.io.pipelines/5.0.2/system.io.pipelines.5.0.2.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/system.text.encodings.web/8.0.0/system.text.encodings.web.8.0.0.nupkg.sha512"
   ],
   "logs": []

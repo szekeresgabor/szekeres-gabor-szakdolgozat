@@ -5,7 +5,6 @@ using Core.Backend.Package.Models;
 using System.Net;
 using System.Text.Json;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
 
 public class ErrorHandlingMiddleware
 {
