@@ -10,12 +10,10 @@ using Microsoft.Extensions.Logging;
 public class ErrorHandlingMiddleware
 {
     private readonly RequestDelegate _next;
-    private readonly ILogger<ErrorHandlingMiddleware> _logger;
 
-    public ErrorHandlingMiddleware(RequestDelegate next, ILogger<ErrorHandlingMiddleware> logger)
+    public ErrorHandlingMiddleware(RequestDelegate next)
     {
         _next = next;
-        _logger = logger;
     }
 
     public async Task InvokeAsync(HttpContext context)
