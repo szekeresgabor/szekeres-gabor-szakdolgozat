@@ -53,6 +53,7 @@ public class TokenAuthorizationService
 
     private SecurityKey GetPublicKey()
     {
+        //TODO: Consul-ba fel kell venni az publikus és privát kulcsot
         var publicKeyBase64 = _configuration["Jwt:PublicKey"];
         if (string.IsNullOrEmpty(publicKeyBase64))
             throw new Exception("Hiányzó configuráció! - Jwt:PublicKey");
