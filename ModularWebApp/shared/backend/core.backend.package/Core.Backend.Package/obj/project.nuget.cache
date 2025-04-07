@@ -1,12 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "m/SXAz+6Wx0=",
+  "dgSpecHash": "vsLOOImLU3A=",
   "success": true,
   "projectFilePath": "/Users/szekeresgabor/Projects/szekeres-gabor-szakdolgozat/ModularWebApp/shared/backend/core.backend.package/Core.Backend.Package/Core.Backend.Package.csproj",
   "expectedPackageFiles": [
     "/Users/szekeresgabor/.nuget/packages/fluentvalidation/11.11.0/fluentvalidation.11.11.0.nupkg.sha512",
-    "/Users/szekeresgabor/.nuget/packages/microsoft.aspnetcore.http.abstractions/2.3.0/microsoft.aspnetcore.http.abstractions.2.3.0.nupkg.sha512",
-    "/Users/szekeresgabor/.nuget/packages/microsoft.aspnetcore.http.features/2.3.0/microsoft.aspnetcore.http.features.2.3.0.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/microsoft.entityframeworkcore/9.0.3/microsoft.entityframeworkcore.9.0.3.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/microsoft.entityframeworkcore.abstractions/9.0.3/microsoft.entityframeworkcore.abstractions.9.0.3.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/microsoft.entityframeworkcore.analyzers/9.0.3/microsoft.entityframeworkcore.analyzers.9.0.3.nupkg.sha512",
@@ -22,8 +20,7 @@
     "/Users/szekeresgabor/.nuget/packages/microsoft.identitymodel.jsonwebtokens/8.7.0/microsoft.identitymodel.jsonwebtokens.8.7.0.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/microsoft.identitymodel.logging/8.7.0/microsoft.identitymodel.logging.8.7.0.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/microsoft.identitymodel.tokens/8.7.0/microsoft.identitymodel.tokens.8.7.0.nupkg.sha512",
-    "/Users/szekeresgabor/.nuget/packages/system.identitymodel.tokens.jwt/8.7.0/system.identitymodel.tokens.jwt.8.7.0.nupkg.sha512",
-    "/Users/szekeresgabor/.nuget/packages/system.text.encodings.web/8.0.0/system.text.encodings.web.8.0.0.nupkg.sha512"
+    "/Users/szekeresgabor/.nuget/packages/system.identitymodel.tokens.jwt/8.7.0/system.identitymodel.tokens.jwt.8.7.0.nupkg.sha512"
   ],
   "logs": []
 }
