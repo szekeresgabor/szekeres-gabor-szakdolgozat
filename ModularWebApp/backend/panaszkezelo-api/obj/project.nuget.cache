@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "XdNyhixOM2A=",
+  "dgSpecHash": "HoTIV2xD/00=",
   "success": true,
   "projectFilePath": "/Users/szekeresgabor/Projects/szekeres-gabor-szakdolgozat/ModularWebApp/backend/panaszkezelo-api/panaszkezelo-api.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,9 @@
     "/Users/szekeresgabor/.nuget/packages/azure.core/1.38.0/azure.core.1.38.0.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/azure.identity/1.11.4/azure.identity.1.11.4.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/consul/1.6.10.8/consul.1.6.10.8.nupkg.sha512",
+    "/Users/szekeresgabor/.nuget/packages/fluentvalidation/11.5.1/fluentvalidation.11.5.1.nupkg.sha512",
+    "/Users/szekeresgabor/.nuget/packages/fluentvalidation.aspnetcore/11.3.0/fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
+    "/Users/szekeresgabor/.nuget/packages/fluentvalidation.dependencyinjectionextensions/11.5.1/fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/fluid.core/2.21.0/fluid.core.2.21.0.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/szekeresgabor/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/9.0.3/microsoft.aspnetcore.authentication.jwtbearer.9.0.3.nupkg.sha512",

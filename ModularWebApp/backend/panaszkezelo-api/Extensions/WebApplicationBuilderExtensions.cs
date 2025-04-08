@@ -61,6 +61,9 @@ public static class WebApplicationBuilderExtensions
         // Saját szolgáltatások regisztrálása
         builder.Services.AddApplicationServices();
 
+        //FluentValidation szabályok hozzáadása az alkalmazáshoz
+        builder.Services.AddValidation();
+
         //GenericRepository hozzáadása az alkalmazáshoz
         builder.Services.AddGenericRepository<Panasz, PanaszkezeloDbContext>();
 
