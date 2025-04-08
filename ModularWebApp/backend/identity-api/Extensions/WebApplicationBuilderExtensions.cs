@@ -1,9 +1,11 @@
-using Core.Backend.Package.Extensions;
-using identity_api.Data;
+namespace identity_api.Extensions;
+
 using Microsoft.EntityFrameworkCore;
 using NSwag.CodeGeneration.TypeScript;
 
-namespace identity_api.Extensions;
+using identity_api.Data;
+using Core.Backend.Package.Utils;
+using Core.Backend.Package.Extensions;
 
 public static class WebApplicationBuilderExtensions
 {
@@ -17,6 +19,16 @@ public static class WebApplicationBuilderExtensions
         {
             options.Title = "Identity API Dokumentáció";
             options.Version = "v1";
+
+            options.AddSecurity("JWT", Enumerable.Empty<string>(), new NSwag.OpenApiSecurityScheme
+            {
+                Type = NSwag.OpenApiSecuritySchemeType.ApiKey,
+                Name = "Authorization",
+                In = NSwag.OpenApiSecurityApiKeyLocation.Header,
+                Description = "Add meg a JWT tokent így: Bearer {token}"
+            });
+
+            options.OperationProcessors.Add(new NSwag.Generation.Processors.Security.AspNetCoreOperationSecurityScopeProcessor("JWT"));
 
             options.PostProcess = apiDocument =>
             {
@@ -56,6 +68,9 @@ public static class WebApplicationBuilderExtensions
         //Elastic log service hozzáadása
         builder.Services.AddElasticLogger();
 
+        //JWT kezelést segítő szolgáltatások hozzáadása
+        builder.Services.AddJwtPermission(builder.Configuration);
+
         var app = builder.Build();
 
         // Middleware pipeline
@@ -74,6 +89,9 @@ public static class WebApplicationBuilderExtensions
 
         //Elastic log middleware hozzádása
         app.UseElasticLogger();
+
+        //JWT kezelés add
+        app.UseJwtPermission();
 
         //Seedek futtatása az alkalmazás indulásakor 
         using (var scope = app.Services.CreateScope())

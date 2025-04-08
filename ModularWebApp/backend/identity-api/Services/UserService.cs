@@ -5,6 +5,11 @@ using identity_api.Data;
 
 public class UserService(IGenericRepository<User> userRepository) : IUserService
 {
+    public async Task<User?> GetById(Guid id)
+    {
+        return await userRepository.GetByIdAsync(id);
+    }
+
     public async Task<User?> ValidateUserAsync(string username, string password)
     {
         var users = await userRepository.FindAsync(u => u.Username == username && u.Password == password);

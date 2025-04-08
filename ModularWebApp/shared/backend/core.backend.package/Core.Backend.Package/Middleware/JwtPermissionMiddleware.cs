@@ -27,13 +27,6 @@ public class JwtPermissionMiddleware
             return;
         }
 
-        // Public végpont?
-        if (endpoint.Metadata.GetMetadata<AllowAnonymousPermissionAttribute>() != null)
-        {
-            await _next(context);
-            return;
-        }
-
         var permissionAttr = endpoint.Metadata.GetMetadata<PermissionRequiredAttribute>();
         var roleAttr = endpoint.Metadata.GetMetadata<RoleRequiredAttribute>();
 
