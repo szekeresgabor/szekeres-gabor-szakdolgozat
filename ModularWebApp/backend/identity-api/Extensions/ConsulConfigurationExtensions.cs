@@ -10,7 +10,6 @@ public static class ConsulConfigurationExtensions
     /// Hozzáadja a Consul konfigurációt a megadott IConfigurationBuilder-hez.
     /// </summary>
     /// <param name="builder">A konfigurációs builder.</param>
-    /// <param name="serviceName">A Consul kulcs, pl. "appsettings/indentity-api".</param>
     /// <returns>A továbbfűzhető IConfigurationBuilder.</returns>
     public static IConfigurationBuilder AddConsulConfiguration(this IConfigurationBuilder builder)
     {
