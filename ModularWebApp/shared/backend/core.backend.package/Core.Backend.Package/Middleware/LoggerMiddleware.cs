@@ -29,7 +29,7 @@ public class LoggerMiddleware
         await loggerService.LogInfoAsync("Request started", correlationId, requestInfo);
 
         var originalBodyStream = context.Response.Body;
-        using var responseBody = new MemoryStream();
+        var responseBody = new MemoryStream();
         context.Response.Body = responseBody;
 
         try
@@ -47,13 +47,18 @@ public class LoggerMiddleware
             };
 
             await loggerService.LogInfoAsync("Request finished", correlationId, responseInfo);
-
-            await responseBody.CopyToAsync(originalBodyStream);
         }
         catch (Exception ex)
         {
             await loggerService.LogErrorAsync("Unhandled exception", correlationId, ex);
             throw;
+        }
+        finally
+        {
+            responseBody.Seek(0, SeekOrigin.Begin);
+            await responseBody.CopyToAsync(originalBodyStream);
+            context.Response.Body = originalBodyStream;
+            responseBody.Dispose();
         }
     }
 }

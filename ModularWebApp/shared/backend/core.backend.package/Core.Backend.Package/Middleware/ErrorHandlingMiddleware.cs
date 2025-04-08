@@ -28,7 +28,7 @@ public class ErrorHandlingMiddleware
             var errorResponse = new ErrorResponse(
                     message: "Hiba történt a feldolgozás során.",
                     detail: ex.Message,
-                    correlationId: context.Request.Headers["X-CorrelationID"].FirstOrDefault() ?? Guid.NewGuid().ToString()
+                    correlationId: context.Items["CorrelationID"] as string ?? Guid.NewGuid().ToString()
                 );
 
             var result = JsonSerializer.Serialize(errorResponse);

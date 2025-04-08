@@ -10,8 +10,10 @@ public class LoggerService : ILoggerService
 
     public LoggerService(IConfiguration configuration)
     {
-        //TODO: Consul-ba fel kell venni az Elastic címét
-        _elasticUri = configuration["ElasticConfiguration:Uri"];
+        var elasticUri = configuration["ElasticConfiguration:Uri"];
+        if (string.IsNullOrEmpty(elasticUri))
+            throw new Exception("Hiányzó konfiguráció: ElasticConfiguration:Uri");
+        _elasticUri = elasticUri;
         _httpClient = new HttpClient();
     }
 

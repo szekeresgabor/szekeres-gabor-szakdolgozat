@@ -11,8 +11,6 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<ITokenService, TokenService>();
 
-        services.AddGenericRepository<User, IdentityDbContext>();
-
         return services;
     }
 }

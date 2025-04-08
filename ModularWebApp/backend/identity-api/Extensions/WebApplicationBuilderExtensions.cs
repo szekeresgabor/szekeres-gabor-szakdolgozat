@@ -1,3 +1,4 @@
+using Core.Backend.Package.Extensions;
 using identity_api.Data;
 using Microsoft.EntityFrameworkCore;
 using NSwag.CodeGeneration.TypeScript;
@@ -49,6 +50,12 @@ public static class WebApplicationBuilderExtensions
         // Saját szolgáltatások regisztrálása
         builder.Services.AddApplicationServices();
 
+        //GenericRepository hozzáadása az alkalmazáshoz
+        builder.Services.AddGenericRepository<User, IdentityDbContext>();
+
+        //Elastic log service hozzáadása
+        builder.Services.AddElasticLogger();
+
         var app = builder.Build();
 
         // Middleware pipeline
@@ -61,6 +68,12 @@ public static class WebApplicationBuilderExtensions
 
         app.UseHttpsRedirection();
         app.MapControllers();
+
+        //Hiba kezelés hozzádása
+        app.UseErrorHandling();
+
+        //Elastic log middleware hozzádása
+        app.UseElasticLogger();
 
         //Seedek futtatása az alkalmazás indulásakor 
         using (var scope = app.Services.CreateScope())
