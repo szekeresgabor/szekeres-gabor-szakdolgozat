@@ -21,10 +21,12 @@ public class PanaszController : ControllerBase
     }
 
     [HttpGet]
+    [PermissionRequired("panaszkezelo.read")]
     public async Task<IActionResult> GetAll()
         => Ok(await _service.GetAllAsync());
 
     [HttpGet("{id}")]
+    [PermissionRequired("panaszkezelo.read")]
     public async Task<IActionResult> GetById(Guid id)
     {
         var panasz = await _service.GetByIdAsync(id);
@@ -32,6 +34,7 @@ public class PanaszController : ControllerBase
     }
 
     [HttpPost]
+    [PermissionRequired("panaszkezelo.edit")]
     public async Task<IActionResult> Create([FromBody] PanaszDto dto)
     {
         var id = await _service.CreateAsync(dto);
@@ -39,10 +42,12 @@ public class PanaszController : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [PermissionRequired("panaszkezelo.edit")]
     public async Task<IActionResult> Update(Guid id, [FromBody] PanaszDto dto)
         => await _service.UpdateAsync(id, dto) ? NoContent() : NotFound();
 
     [HttpDelete("{id}")]
+    [PermissionRequired("panaszkezelo.delete")]
     public async Task<IActionResult> Delete(Guid id)
         => await _service.DeleteAsync(id) ? NoContent() : NotFound();
 }
