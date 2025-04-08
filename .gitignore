@@ -42,3 +42,6 @@ Thumbs.db
 *.secret.json
 appsettings.*.json
 secrets.json
+/Keys
+.DS_Store
+.DS_Store

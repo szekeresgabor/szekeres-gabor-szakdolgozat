@@ -1,8 +1,8 @@
 namespace identity_api.Services;
 
-using identity_api.Models;
+using identity_api.Data;
 
 public interface IUserService
 {
-    User? ValidateUser(string username, string password);
+    Task<User?> ValidateUserAsync(string username, string password);
 }

@@ -1,11 +1,12 @@
+using identity_api.Data;
+using Microsoft.EntityFrameworkCore;
 using NSwag.CodeGeneration.TypeScript;
-using Winton.Extensions.Configuration.Consul;
 
 namespace identity_api.Extensions;
 
 public static class WebApplicationBuilderExtensions
 {
-    public static WebApplication BuildApi(this WebApplicationBuilder builder)
+    public async static Task<WebApplication> BuildApi(this WebApplicationBuilder builder)
     {
         // Swagger + OpenAPI
         builder.Services.AddEndpointsApiExplorer();
@@ -28,7 +29,7 @@ public static class WebApplicationBuilderExtensions
                 var outputPath = Path.Combine(
                     AppContext.BaseDirectory,
                     "..", "..", "..", "..", "..", "shared", "frontend", "projects",
-                    "core-frontend-package", "src", "lib", "generated", "indentity-api.ts");
+                    "core-frontend-package", "src", "lib", "generated", "identity-api.ts");
 
                 var fullPath = Path.GetFullPath(outputPath);
 
@@ -37,18 +38,13 @@ public static class WebApplicationBuilderExtensions
         });
 
         // Consul konfiguráció
-        builder.Configuration.AddConsul(
-            "appsettings/indentity-api",
-            options =>
-            {
-                options.ConsulConfigurationOptions = cco =>
-                {
-                    cco.Address = new Uri("http://localhost:8500");
-                };
-                options.Optional = false;
-                options.ReloadOnChange = true;
-                options.Parser = new Winton.Extensions.Configuration.Consul.Parsers.SimpleConfigurationParser();
-            });
+        builder.Configuration.AddConsulConfiguration();
+
+        //DB Context beállítása
+        builder.Services.AddDbContext<IdentityDbContext>(options =>
+        {
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+        });
 
         // Saját szolgáltatások regisztrálása
         builder.Services.AddApplicationServices();
@@ -65,6 +61,14 @@ public static class WebApplicationBuilderExtensions
 
         app.UseHttpsRedirection();
         app.MapControllers();
+
+        //Seedek futtatása az alkalmazás indulásakor 
+        using (var scope = app.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<IdentityDbContext>();
+            await db.Database.MigrateAsync();
+            await UserSeeder.SeedAsync(db);
+        }
 
         return app;
     }

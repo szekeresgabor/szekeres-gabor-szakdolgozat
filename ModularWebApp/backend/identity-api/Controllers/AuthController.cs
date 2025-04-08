@@ -9,9 +9,9 @@ namespace identity_api.Controllers;
 public class AuthController(IUserService userService, ITokenService tokenService) : ControllerBase
 {
     [HttpPost("login")]
-    public IActionResult Login(LoginRequest request)
+    public async Task<IActionResult> Login(LoginRequest request)
     {
-        var user = userService.ValidateUser(request.Username, request.Password);
+        var user = await userService.ValidateUserAsync(request.Username, request.Password);
         if (user is null) return Unauthorized("Hibás felhasználónév vagy jelszó");
 
         var token = tokenService.GenerateToken(user);

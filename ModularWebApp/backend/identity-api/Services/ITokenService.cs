@@ -1,4 +1,4 @@
-using identity_api.Models;
+using identity_api.Data;
 
 namespace identity_api.Services;
 

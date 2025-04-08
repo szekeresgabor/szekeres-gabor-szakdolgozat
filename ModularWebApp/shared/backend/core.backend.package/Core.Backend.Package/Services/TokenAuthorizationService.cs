@@ -3,6 +3,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
+using Core.Backend.Package.Utils;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
@@ -53,12 +54,11 @@ public class TokenAuthorizationService
 
     private SecurityKey GetPublicKey()
     {
-        //TODO: Consul-ba fel kell venni az publikus és privát kulcsot
-        var publicKeyBase64 = _configuration["Jwt:PublicKey"];
-        if (string.IsNullOrEmpty(publicKeyBase64))
-            throw new Exception("Hiányzó configuráció! - Jwt:PublicKey");
-        var rsa = RSA.Create();
-        rsa.ImportSubjectPublicKeyInfo(Convert.FromBase64String(publicKeyBase64), out _);
+        var publicKeyPath = _configuration["Jwt:PublicKeyPath"];
+        if (string.IsNullOrEmpty(publicKeyPath))
+            throw new Exception("Hiányzó konfiguráció: Jwt:PublicKeyPath");
+
+        var rsa = RsaKeyLoader.LoadPublicKey(publicKeyPath);
         return new RsaSecurityKey(rsa);
     }
 }

@@ -1,21 +1,13 @@
 namespace identity_api.Services;
 
-using identity_api.Models;
+using Core.Backend.Package.Data;
+using identity_api.Data;
 
-public class UserService : IUserService
+public class UserService(IGenericRepository<User> userRepository) : IUserService
 {
-    private static readonly List<User> dummy =
-    [
-        new User
-        {
-            Id = Guid.NewGuid(),
-            Username = "admin",
-            Password = "password",
-            Roles = ["admin"],
-            Permissions = ["user.read", "user.write"]
-        }
-    ];
-
-    public User? ValidateUser(string username, string password)
-        => dummy.FirstOrDefault(u => u.Username == username && u.Password == password);
+    public async Task<User?> ValidateUserAsync(string username, string password)
+    {
+        var users = await userRepository.FindAsync(u => u.Username == username && u.Password == password);
+        return users.FirstOrDefault();
+    }
 }

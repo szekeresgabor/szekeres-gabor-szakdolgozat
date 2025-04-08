@@ -1,4 +1,5 @@
-using identity_api.Models;
+using Core.Backend.Package.Utils;
+using identity_api.Data;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -17,9 +18,12 @@ public class TokenService(IConfiguration config) : ITokenService
             new("permissions", string.Join(",", user.Permissions))
         };
 
-        //TODO: Fel kell venni a JWT:PrivateKey-t a Consulba
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:PrivateKey"]!));
-        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+        var privateKeyPath = config["Jwt:PrivateKeyPath"];
+        if (string.IsNullOrEmpty(privateKeyPath))
+            throw new Exception("Hiányzó konfiguráció: Jwt:PrivateKeyPath");
+
+        var rsa = RsaKeyLoader.LoadPrivateKey(privateKeyPath);
+        var creds = new SigningCredentials(new RsaSecurityKey(rsa), SecurityAlgorithms.RsaSha256);
 
         var token = new JwtSecurityToken(
             issuer: "identity-api.local",

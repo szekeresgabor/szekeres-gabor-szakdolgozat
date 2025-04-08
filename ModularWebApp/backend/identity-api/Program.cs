@@ -1,8 +1,6 @@
 using identity_api.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
-var app = builder.BuildApi();
-
-//var connString = builder.Configuration.GetConnectionString("DefaultConnection");
+var app = await builder.BuildApi();
 
 app.Run();
