@@ -17,7 +17,7 @@ public class JwtPermissionMiddleware
         _logger = logger;
     }
 
-    public async Task InvokeAsync(HttpContext context, TokenAuthorizationService tokenService)
+    public async Task InvokeAsync(HttpContext context, ITokenAuthorizationService tokenService)
     {
         var endpoint = context.Features.Get<IEndpointFeature>()?.Endpoint;
 

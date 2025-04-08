@@ -13,27 +13,16 @@ public static class JwtPermissionExtension
     /// <summary>
     /// Regisztrálja a JWT alapú jogosultság middleware-t és a hozzá tartozó szolgáltatást.
     /// </summary>
-    public static IServiceCollection AddJwtPermission(this IServiceCollection services, IConfiguration config)
+    public static IServiceCollection AddJwtPermission(this IServiceCollection services)
     {
-        services.AddSingleton<TokenAuthorizationService>();
+        services.AddSingleton<ITokenAuthorizationService, TokenAuthorizationService>();
         services
                 .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
                 {
-                    var publicKeyPath = config["Jwt:PublicKeyPath"];
-                    if (string.IsNullOrEmpty(publicKeyPath))
-                        throw new Exception("Hiányzó konfiguráció: Jwt:PublicKeyPath");
-                    var rsa = RsaKeyLoader.LoadPublicKey(publicKeyPath!);
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new RsaSecurityKey(rsa),
-                        ValidateIssuer = true,
-                        ValidIssuer = "identity-api.local",
-                        ValidateAudience = true,
-                        ValidAudience = "all-services",
-                        ClockSkew = TimeSpan.Zero
-                    };
+                    using var serviceProvider = services.BuildServiceProvider();
+                    var tokenAuthorizationService = serviceProvider.GetRequiredService<ITokenAuthorizationService>();
+                    options.TokenValidationParameters = tokenAuthorizationService.GetTokenValidationParams();
                 });
         return services;
     }

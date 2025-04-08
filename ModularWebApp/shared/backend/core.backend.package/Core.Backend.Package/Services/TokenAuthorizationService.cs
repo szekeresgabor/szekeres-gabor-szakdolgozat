@@ -7,7 +7,7 @@ using Core.Backend.Package.Utils;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
-public class TokenAuthorizationService
+public class TokenAuthorizationService : ITokenAuthorizationService
 {
     private readonly IConfiguration _configuration;
 
@@ -19,16 +19,7 @@ public class TokenAuthorizationService
     public ClaimsPrincipal? ValidateToken(string token)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
-
-        var validationParameters = new TokenValidationParameters
-        {
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = GetPublicKey(),
-            ValidateIssuer = false,
-            ValidateAudience = false,
-            ClockSkew = TimeSpan.Zero
-        };
-
+        var validationParameters = GetTokenValidationParams();
         try
         {
             var principal = tokenHandler.ValidateToken(token, validationParameters, out var validatedToken);
@@ -38,6 +29,20 @@ public class TokenAuthorizationService
         {
             return null;
         }
+    }
+
+    public TokenValidationParameters GetTokenValidationParams()
+    {
+        return new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = GetPublicKey(),
+            ValidateIssuer = true,
+            ValidIssuer = "identity-api.local",
+            ValidateAudience = true,
+            ValidAudience = "all-services",
+            ClockSkew = TimeSpan.Zero
+        };
     }
 
     public bool HasAnyPermission(ClaimsPrincipal user, IEnumerable<string> permissions)

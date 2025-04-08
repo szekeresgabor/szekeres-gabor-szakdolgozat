@@ -69,7 +69,7 @@ public static class WebApplicationBuilderExtensions
         builder.Services.AddElasticLogger();
 
         //JWT kezelést segítő szolgáltatások hozzáadása
-        builder.Services.AddJwtPermission(builder.Configuration);
+        builder.Services.AddJwtPermission();
 
         var app = builder.Build();
 
