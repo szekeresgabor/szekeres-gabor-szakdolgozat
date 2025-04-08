@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using identity_api.Data;
+using panaszkezelo_api.Data;
 
-public class IdentityDbContextFactory : IDesignTimeDbContextFactory<IdentityDbContext>
+public class PanaszkezeloDbContextFactory : IDesignTimeDbContextFactory<PanaszekezeloDBContext>
 {
-    public IdentityDbContext CreateDbContext(string[] args)
+    public PanaszekezeloDBContext CreateDbContext(string[] args)
     {
         var configuration = new ConfigurationBuilder()
             .AddConsulConfiguration()
@@ -12,9 +12,9 @@ public class IdentityDbContextFactory : IDesignTimeDbContextFactory<IdentityDbCo
 
         var connectionString = configuration.GetConnectionString("DefaultConnection");
 
-        var optionsBuilder = new DbContextOptionsBuilder<IdentityDbContext>();
+        var optionsBuilder = new DbContextOptionsBuilder<PanaszekezeloDBContext>();
         optionsBuilder.UseSqlServer(connectionString);
 
-        return new IdentityDbContext(optionsBuilder.Options);
+        return new PanaszekezeloDBContext(optionsBuilder.Options);
     }
 }
