@@ -30,31 +30,22 @@ public class JwtPermissionMiddleware
         var permissionAttr = endpoint.Metadata.GetMetadata<PermissionRequiredAttribute>();
         var roleAttr = endpoint.Metadata.GetMetadata<RoleRequiredAttribute>();
 
-        // Nincs megadva se jogosultság, se szerepkör?
+        // Nincs megadva se jogosultság, se szerepkör, nincs teendő?
         if (permissionAttr == null && roleAttr == null)
         {
             await _next(context);
             return;
         }
 
-        var token = context.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
-
-        if (string.IsNullOrWhiteSpace(token))
+        // használjuk a már validált HttpContext.User-t
+        var principal = context.User;
+        if (principal?.Identity?.IsAuthenticated != true)
         {
             context.Response.StatusCode = StatusCodes.Status401Unauthorized;
-            await context.Response.WriteAsync("Hiányzó token.");
+            await context.Response.WriteAsync("Nincs hitelesítve a felhasználó.");
             return;
         }
 
-        var principal = tokenService.ValidateToken(token);
-        if (principal == null)
-        {
-            context.Response.StatusCode = StatusCodes.Status401Unauthorized;
-            await context.Response.WriteAsync("Érvénytelen token.");
-            return;
-        }
-
-        // Jogosultság vagy szerepkör alapján engedélyezés
         var hasPermission = permissionAttr != null &&
             tokenService.HasAnyPermission(principal, permissionAttr.Permissions);
 
@@ -68,7 +59,6 @@ public class JwtPermissionMiddleware
             return;
         }
 
-        context.User = principal;
         await _next(context);
     }
 }

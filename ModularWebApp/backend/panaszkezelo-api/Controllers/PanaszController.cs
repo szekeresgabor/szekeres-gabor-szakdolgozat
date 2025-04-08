@@ -1,4 +1,5 @@
 using System;
+using Core.Backend.Package.Attributes;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using panaszkezelo_api.Models;
@@ -9,6 +10,7 @@ namespace panaszkezelo_api.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 [Authorize]
+[RoleRequired("panaszkezelo")]
 public class PanaszController : ControllerBase
 {
     private readonly IPanaszService _service;

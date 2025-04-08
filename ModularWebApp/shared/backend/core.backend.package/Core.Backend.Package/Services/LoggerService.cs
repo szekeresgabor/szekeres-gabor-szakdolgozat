@@ -35,18 +35,26 @@ public class LoggerService : ILoggerService
 
     private async Task SendLogAsync(string level, string message, string correlationId, object? data)
     {
-        var logEntry = new
+        try
         {
-            timestamp = DateTime.UtcNow,
-            level,
-            message,
-            correlationId,
-            data
-        };
+            var logEntry = new
+            {
+                timestamp = DateTime.UtcNow,
+                level,
+                message,
+                correlationId,
+                data
+            };
 
-        var json = JsonSerializer.Serialize(logEntry);
-        var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var json = JsonSerializer.Serialize(logEntry);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-        await _httpClient.PostAsync($"{_elasticUri}/logs/_doc", content);
+            await _httpClient.PostAsync($"{_elasticUri}/logs/_doc", content);
+        }
+        catch (Exception ex)
+        {
+            //Ha bármi hiba van az elastic szolgáltatással, akkor elnyeljük azt, hogy a rendszer továbbra is működjön
+            //Ide jöhetne valami egyéb megoldás hogy értesítve legyen az admin hogy baj van az elasticcal.
+        }
     }
 }

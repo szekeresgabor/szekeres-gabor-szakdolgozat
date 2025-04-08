@@ -14,9 +14,11 @@ public class TokenService(IConfiguration config) : ITokenService
         var claims = new List<Claim>
         {
             new(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
-            new("roles", string.Join(",", user.Roles)),
-            new("permissions", string.Join(",", user.Permissions))
+            new(JwtRegisteredClaimNames.Name, user.Username.ToString())
         };
+
+        claims.AddRange(user.Roles.Select(r => new Claim("roles", r)));
+        claims.AddRange(user.Permissions.Select(p => new Claim("permissions", p)));
 
         var privateKeyPath = config["Jwt:PrivateKeyPath"];
         if (string.IsNullOrEmpty(privateKeyPath))

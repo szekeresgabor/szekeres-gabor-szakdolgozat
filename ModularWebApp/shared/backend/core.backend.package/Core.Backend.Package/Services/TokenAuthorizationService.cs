@@ -16,26 +16,12 @@ public class TokenAuthorizationService : ITokenAuthorizationService
         _configuration = configuration;
     }
 
-    public ClaimsPrincipal? ValidateToken(string token)
-    {
-        var tokenHandler = new JwtSecurityTokenHandler();
-        var validationParameters = GetTokenValidationParams();
-        try
-        {
-            var principal = tokenHandler.ValidateToken(token, validationParameters, out var validatedToken);
-            return principal;
-        }
-        catch
-        {
-            return null;
-        }
-    }
-
     public TokenValidationParameters GetTokenValidationParams()
     {
         return new TokenValidationParameters
         {
             ValidateIssuerSigningKey = true,
+            RoleClaimType = ClaimTypes.Role,
             IssuerSigningKey = GetPublicKey(),
             ValidateIssuer = true,
             ValidIssuer = "identity-api.local",
@@ -54,7 +40,9 @@ public class TokenAuthorizationService : ITokenAuthorizationService
 
     public bool HasAnyRole(ClaimsPrincipal user, IEnumerable<string> roles)
     {
-        return roles.Any(r => user.IsInRole(r));
+        return roles.Any(p =>
+            user.Claims.Any(c => c.Type == ClaimTypes.Role && c.Value == p)
+        );
     }
 
     private SecurityKey GetPublicKey()

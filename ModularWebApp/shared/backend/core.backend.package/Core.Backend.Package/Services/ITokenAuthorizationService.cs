@@ -5,8 +5,6 @@ namespace Core.Backend.Package.Services;
 
 public interface ITokenAuthorizationService
 {
-    ClaimsPrincipal? ValidateToken(string token);
-
     TokenValidationParameters GetTokenValidationParams();
 
     bool HasAnyPermission(ClaimsPrincipal user, IEnumerable<string> permissions);
