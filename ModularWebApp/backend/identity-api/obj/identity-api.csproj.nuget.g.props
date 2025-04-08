@@ -16,6 +16,7 @@
     <Import Project="$(NuGetPackageRoot)nswag.msbuild/14.3.0/buildTransitive/NSwag.MSBuild.props" Condition="Exists('$(NuGetPackageRoot)nswag.msbuild/14.3.0/buildTransitive/NSwag.MSBuild.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.extensions.apidescription.server/6.0.3/build/Microsoft.Extensions.ApiDescription.Server.props" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.apidescription.server/6.0.3/build/Microsoft.Extensions.ApiDescription.Server.props')" />
     <Import Project="$(NuGetPackageRoot)nswag.aspnetcore/14.3.0/build/NSwag.AspNetCore.props" Condition="Exists('$(NuGetPackageRoot)nswag.aspnetcore/14.3.0/build/NSwag.AspNetCore.props')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore/9.0.3/buildTransitive/net8.0/Microsoft.EntityFrameworkCore.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore/9.0.3/buildTransitive/net8.0/Microsoft.EntityFrameworkCore.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgNSwag_MSBuild Condition=" '$(PkgNSwag_MSBuild)' == '' ">/Users/szekeresgabor/.nuget/packages/nswag.msbuild/14.3.0</PkgNSwag_MSBuild>
