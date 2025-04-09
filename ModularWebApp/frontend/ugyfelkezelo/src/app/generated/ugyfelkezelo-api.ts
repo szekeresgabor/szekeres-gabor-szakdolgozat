@@ -10,13 +10,13 @@
 
 
 
-export class WeatherForecast implements IWeatherForecast {
-    date?: Date;
-    temperatureC?: number;
-    summary?: string | undefined;
-    temperatureF?: number;
+export class UgyfelDto implements IUgyfelDto {
+    id?: string;
+    nev?: string;
+    email?: string;
+    telefonszam?: string;
 
-    constructor(data?: IWeatherForecast) {
+    constructor(data?: IUgyfelDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -27,39 +27,40 @@ export class WeatherForecast implements IWeatherForecast {
 
     init(_data?: any) {
         if (_data) {
-            this.date = _data["date"] ? new Date(_data["date"].toString()) : <any>undefined;
-            this.temperatureC = _data["temperatureC"];
-            this.summary = _data["summary"];
-            this.temperatureF = _data["temperatureF"];
+            this.id = _data["id"];
+            this.nev = _data["nev"];
+            this.email = _data["email"];
+            this.telefonszam = _data["telefonszam"];
         }
     }
 
-    static fromJS(data: any): WeatherForecast {
+    static fromJS(data: any): UgyfelDto {
         data = typeof data === 'object' ? data : {};
-        let result = new WeatherForecast();
+        let result = new UgyfelDto();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["date"] = this.date ? formatDate(this.date) : <any>undefined;
-        data["temperatureC"] = this.temperatureC;
-        data["summary"] = this.summary;
-        data["temperatureF"] = this.temperatureF;
+        data["id"] = this.id;
+        data["nev"] = this.nev;
+        data["email"] = this.email;
+        data["telefonszam"] = this.telefonszam;
         return data;
     }
 }
 
-export interface IWeatherForecast {
-    date?: Date;
-    temperatureC?: number;
-    summary?: string | undefined;
-    temperatureF?: number;
+export interface IUgyfelDto {
+    id?: string;
+    nev?: string;
+    email?: string;
+    telefonszam?: string;
 }
 
-function formatDate(d: Date) {
-    return d.getFullYear() + '-' + 
-        (d.getMonth() < 9 ? ('0' + (d.getMonth()+1)) : (d.getMonth()+1)) + '-' +
-        (d.getDate() < 10 ? ('0' + d.getDate()) : d.getDate());
+export interface FileResponse {
+    data: Blob;
+    status: number;
+    fileName?: string;
+    headers?: { [name: string]: any };
 }
