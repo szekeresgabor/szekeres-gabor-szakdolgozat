@@ -60,24 +60,6 @@
           "lib/netstandard2.0/Consul.dll": {}
         }
       },
-      "Fluid.Core/2.21.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.FileProviders.Abstractions": "9.0.0",
-          "Parlot": "1.3.5",
-          "TimeZoneConverter": "7.0.0"
-        },
-        "compile": {
-          "lib/net9.0/Fluid.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net9.0/Fluid.dll": {
-            "related": ".pdb;.xml"
-          }
-        }
-      },
       "Humanizer.Core/2.14.1": {
         "type": "package",
         "compile": {
@@ -1324,39 +1306,6 @@
           }
         }
       },
-      "NJsonSchema.CodeGeneration/11.2.0": {
-        "type": "package",
-        "dependencies": {
-          "Fluid.Core": "2.21.0",
-          "NJsonSchema": "11.2.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/NJsonSchema.CodeGeneration.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/NJsonSchema.CodeGeneration.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "NJsonSchema.CodeGeneration.TypeScript/11.2.0": {
-        "type": "package",
-        "dependencies": {
-          "NJsonSchema.CodeGeneration": "11.2.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/NJsonSchema.CodeGeneration.TypeScript.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/NJsonSchema.CodeGeneration.TypeScript.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "NJsonSchema.NewtonsoftJson/11.2.0": {
         "type": "package",
         "dependencies": {
@@ -1434,40 +1383,6 @@
           "buildMultiTargeting/NSwag.AspNetCore.targets": {}
         }
       },
-      "NSwag.CodeGeneration/14.3.0": {
-        "type": "package",
-        "dependencies": {
-          "NJsonSchema.CodeGeneration": "11.2.0",
-          "NSwag.Core": "14.3.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/NSwag.CodeGeneration.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/NSwag.CodeGeneration.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "NSwag.CodeGeneration.TypeScript/14.3.0": {
-        "type": "package",
-        "dependencies": {
-          "NJsonSchema.CodeGeneration.TypeScript": "11.2.0",
-          "NSwag.CodeGeneration": "14.3.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/NSwag.CodeGeneration.TypeScript.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/NSwag.CodeGeneration.TypeScript.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "NSwag.Core/14.3.0": {
         "type": "package",
         "dependencies": {
@@ -1542,19 +1457,6 @@
         },
         "buildMultiTargeting": {
           "buildCrossTargeting/NSwag.MSBuild.props": {}
-        }
-      },
-      "Parlot/1.3.5": {
-        "type": "package",
-        "compile": {
-          "lib/net8.0/Parlot.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net8.0/Parlot.dll": {
-            "related": ".xml"
-          }
         }
       },
       "System.Buffers/4.6.0": {
@@ -2156,19 +2058,6 @@
           }
         }
       },
-      "TimeZoneConverter/7.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net9.0/TimeZoneConverter.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net9.0/TimeZoneConverter.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Winton.Extensions.Configuration.Consul/3.4.0": {
         "type": "package",
         "dependencies": {
@@ -2274,31 +2163,6 @@
         "consul.nuspec",
         "lib/net461/Consul.dll",
         "lib/netstandard2.0/Consul.dll"
-      ]
-    },
-    "Fluid.Core/2.21.0": {
-      "sha512": "VpXoM6bG5UfHlhXyYVxL5NDC+Zus87yAMIKI2UFF9BoJDyGvqwSiodDwhL8Gqp+qnnBZespSd3F0noMNOEYMWQ==",
-      "type": "package",
-      "path": "fluid.core/2.21.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "README.md",
-        "fluid.core.2.21.0.nupkg.sha512",
-        "fluid.core.nuspec",
-        "lib/net6.0/Fluid.dll",
-        "lib/net6.0/Fluid.pdb",
-        "lib/net6.0/Fluid.xml",
-        "lib/net8.0/Fluid.dll",
-        "lib/net8.0/Fluid.pdb",
-        "lib/net8.0/Fluid.xml",
-        "lib/net9.0/Fluid.dll",
-        "lib/net9.0/Fluid.pdb",
-        "lib/net9.0/Fluid.xml",
-        "lib/netstandard2.0/Fluid.dll",
-        "lib/netstandard2.0/Fluid.pdb",
-        "lib/netstandard2.0/Fluid.xml",
-        "logo_64x64.png"
       ]
     },
     "Humanizer.Core/2.14.1": {
@@ -4701,38 +4565,6 @@
         "njsonschema.annotations.nuspec"
       ]
     },
-    "NJsonSchema.CodeGeneration/11.2.0": {
-      "sha512": "/5m8YskvCRMg/Ngjbt2aGcbuCzkZas+GxO0Hnh0ftcHZbyr7AmD7GAMpJDk/kTW5vZuJ1HwkI9J+3Fhh6B/Wpg==",
-      "type": "package",
-      "path": "njsonschema.codegeneration/11.2.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "NuGetIcon.png",
-        "lib/net462/NJsonSchema.CodeGeneration.dll",
-        "lib/net462/NJsonSchema.CodeGeneration.xml",
-        "lib/netstandard2.0/NJsonSchema.CodeGeneration.dll",
-        "lib/netstandard2.0/NJsonSchema.CodeGeneration.xml",
-        "njsonschema.codegeneration.11.2.0.nupkg.sha512",
-        "njsonschema.codegeneration.nuspec"
-      ]
-    },
-    "NJsonSchema.CodeGeneration.TypeScript/11.2.0": {
-      "sha512": "rcKdi08qKDN2cNyAcoLzRxLtQhXYbs3SczMOgXld45fi4HgAjVCU5Qy6Mt9LtY8Gdx8OBCd0m9lyTxk5Dx617w==",
-      "type": "package",
-      "path": "njsonschema.codegeneration.typescript/11.2.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "NuGetIcon.png",
-        "lib/net462/NJsonSchema.CodeGeneration.TypeScript.dll",
-        "lib/net462/NJsonSchema.CodeGeneration.TypeScript.xml",
-        "lib/netstandard2.0/NJsonSchema.CodeGeneration.TypeScript.dll",
-        "lib/netstandard2.0/NJsonSchema.CodeGeneration.TypeScript.xml",
-        "njsonschema.codegeneration.typescript.11.2.0.nupkg.sha512",
-        "njsonschema.codegeneration.typescript.nuspec"
-      ]
-    },
     "NJsonSchema.NewtonsoftJson/11.2.0": {
       "sha512": "5+40CksxHlx9CWQ0MnAkpJGA8MDFdlCR+18SNcg85X+UecT+EYfVVpiZX81mLYBsmbsWHXvPMm/Jipekm0XC8Q==",
       "type": "package",
@@ -4803,38 +4635,6 @@
         "lib/netstandard2.0/NSwag.AspNetCore.xml",
         "nswag.aspnetcore.14.3.0.nupkg.sha512",
         "nswag.aspnetcore.nuspec"
-      ]
-    },
-    "NSwag.CodeGeneration/14.3.0": {
-      "sha512": "I7HkyH9nedPn56/+86qRFN35USqvFIpNVRS2MBGKlslK3Hn+izXeO2+/eNVmkCkhNlHFht5SvkdJgHJyIugxDQ==",
-      "type": "package",
-      "path": "nswag.codegeneration/14.3.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "NuGetIcon.png",
-        "lib/net462/NSwag.CodeGeneration.dll",
-        "lib/net462/NSwag.CodeGeneration.xml",
-        "lib/netstandard2.0/NSwag.CodeGeneration.dll",
-        "lib/netstandard2.0/NSwag.CodeGeneration.xml",
-        "nswag.codegeneration.14.3.0.nupkg.sha512",
-        "nswag.codegeneration.nuspec"
-      ]
-    },
-    "NSwag.CodeGeneration.TypeScript/14.3.0": {
-      "sha512": "1T8PXsvq1CyerRL3DcGT3KWVliJg1ZnXKnlIOKflFKun6v6HCgCTOMRf4Q+YE/BEtnbyFTjr6uZiZHipkgMXDg==",
-      "type": "package",
-      "path": "nswag.codegeneration.typescript/14.3.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "NuGetIcon.png",
-        "lib/net462/NSwag.CodeGeneration.TypeScript.dll",
-        "lib/net462/NSwag.CodeGeneration.TypeScript.xml",
-        "lib/netstandard2.0/NSwag.CodeGeneration.TypeScript.dll",
-        "lib/netstandard2.0/NSwag.CodeGeneration.TypeScript.xml",
-        "nswag.codegeneration.typescript.14.3.0.nupkg.sha512",
-        "nswag.codegeneration.typescript.nuspec"
       ]
     },
     "NSwag.Core/14.3.0": {
@@ -5239,25 +5039,6 @@
         "tools/Win/TimeZoneConverter.dll",
         "tools/Win/YamlDotNet.dll",
         "tools/Win/netstandard.dll"
-      ]
-    },
-    "Parlot/1.3.5": {
-      "sha512": "F22bBSTGJgzJBBngX7SmgPzbCjrzwt4sPIOUlQ/K9p3mvau+o0mGnDxYTTik7ODOjXBDalpsZacaa8eSnPoEFw==",
-      "type": "package",
-      "path": "parlot/1.3.5",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net472/Parlot.dll",
-        "lib/net472/Parlot.xml",
-        "lib/net6.0/Parlot.dll",
-        "lib/net6.0/Parlot.xml",
-        "lib/net8.0/Parlot.dll",
-        "lib/net8.0/Parlot.xml",
-        "lib/netstandard2.0/Parlot.dll",
-        "lib/netstandard2.0/Parlot.xml",
-        "parlot.1.3.5.nupkg.sha512",
-        "parlot.nuspec"
       ]
     },
     "System.Buffers/4.6.0": {
@@ -6315,28 +6096,6 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "TimeZoneConverter/7.0.0": {
-      "sha512": "sFbY65N/5GdsHx7nkdHFHUG+5Ar4W0w6Aks7Y2X+Q4NOTw6XyX2Il7jm+4tPkc//4mA3nG0RdxI8gKgoJitdLw==",
-      "type": "package",
-      "path": "timezoneconverter/7.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "README.md",
-        "lib/net462/TimeZoneConverter.dll",
-        "lib/net462/TimeZoneConverter.xml",
-        "lib/net6.0/TimeZoneConverter.dll",
-        "lib/net6.0/TimeZoneConverter.xml",
-        "lib/net8.0/TimeZoneConverter.dll",
-        "lib/net8.0/TimeZoneConverter.xml",
-        "lib/net9.0/TimeZoneConverter.dll",
-        "lib/net9.0/TimeZoneConverter.xml",
-        "lib/netstandard2.0/TimeZoneConverter.dll",
-        "lib/netstandard2.0/TimeZoneConverter.xml",
-        "timezoneconverter.7.0.0.nupkg.sha512",
-        "timezoneconverter.nuspec"
-      ]
-    },
     "Winton.Extensions.Configuration.Consul/3.4.0": {
       "sha512": "9oS0jui5YYsMECzp5I69QKojEZK+FMG3KAOXTggZf3lxg4Nx/eRB648TOXIlVBxpJ1aFEQGklHdKke1oozexUQ==",
       "type": "package",
@@ -6390,7 +6149,6 @@
       "Microsoft.EntityFrameworkCore.Design >= 9.0.3",
       "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.3",
       "NSwag.AspNetCore >= 14.3.0",
-      "NSwag.CodeGeneration.TypeScript >= 14.3.0",
       "NSwag.MSBuild >= 14.3.0",
       "Winton.Extensions.Configuration.Consul >= 3.4.0"
     ]
@@ -6457,10 +6215,6 @@
             "version": "[9.0.3, )"
           },
           "NSwag.AspNetCore": {
-            "target": "Package",
-            "version": "[14.3.0, )"
-          },
-          "NSwag.CodeGeneration.TypeScript": {
             "target": "Package",
             "version": "[14.3.0, )"
           },
