@@ -10,13 +10,17 @@
 
 
 
-export class WeatherForecast implements IWeatherForecast {
-    date?: Date;
-    temperatureC?: number;
-    summary?: string | undefined;
-    temperatureF?: number;
+export class SzerzodesDto implements ISzerzodesDto {
+    id?: string;
+    azonosito?: string;
+    kotesDatuma?: Date;
+    lejaratDatuma?: Date | undefined;
+    megjegyzes?: string | undefined;
+    ugyfelId?: string;
+    dokumentumId?: string | undefined;
+    osszeg?: number;
 
-    constructor(data?: IWeatherForecast) {
+    constructor(data?: ISzerzodesDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -27,39 +31,52 @@ export class WeatherForecast implements IWeatherForecast {
 
     init(_data?: any) {
         if (_data) {
-            this.date = _data["date"] ? new Date(_data["date"].toString()) : <any>undefined;
-            this.temperatureC = _data["temperatureC"];
-            this.summary = _data["summary"];
-            this.temperatureF = _data["temperatureF"];
+            this.id = _data["id"];
+            this.azonosito = _data["azonosito"];
+            this.kotesDatuma = _data["kotesDatuma"] ? new Date(_data["kotesDatuma"].toString()) : <any>undefined;
+            this.lejaratDatuma = _data["lejaratDatuma"] ? new Date(_data["lejaratDatuma"].toString()) : <any>undefined;
+            this.megjegyzes = _data["megjegyzes"];
+            this.ugyfelId = _data["ugyfelId"];
+            this.dokumentumId = _data["dokumentumId"];
+            this.osszeg = _data["osszeg"];
         }
     }
 
-    static fromJS(data: any): WeatherForecast {
+    static fromJS(data: any): SzerzodesDto {
         data = typeof data === 'object' ? data : {};
-        let result = new WeatherForecast();
+        let result = new SzerzodesDto();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["date"] = this.date ? formatDate(this.date) : <any>undefined;
-        data["temperatureC"] = this.temperatureC;
-        data["summary"] = this.summary;
-        data["temperatureF"] = this.temperatureF;
+        data["id"] = this.id;
+        data["azonosito"] = this.azonosito;
+        data["kotesDatuma"] = this.kotesDatuma ? this.kotesDatuma.toISOString() : <any>undefined;
+        data["lejaratDatuma"] = this.lejaratDatuma ? this.lejaratDatuma.toISOString() : <any>undefined;
+        data["megjegyzes"] = this.megjegyzes;
+        data["ugyfelId"] = this.ugyfelId;
+        data["dokumentumId"] = this.dokumentumId;
+        data["osszeg"] = this.osszeg;
         return data;
     }
 }
 
-export interface IWeatherForecast {
-    date?: Date;
-    temperatureC?: number;
-    summary?: string | undefined;
-    temperatureF?: number;
+export interface ISzerzodesDto {
+    id?: string;
+    azonosito?: string;
+    kotesDatuma?: Date;
+    lejaratDatuma?: Date | undefined;
+    megjegyzes?: string | undefined;
+    ugyfelId?: string;
+    dokumentumId?: string | undefined;
+    osszeg?: number;
 }
 
-function formatDate(d: Date) {
-    return d.getFullYear() + '-' + 
-        (d.getMonth() < 9 ? ('0' + (d.getMonth()+1)) : (d.getMonth()+1)) + '-' +
-        (d.getDate() < 10 ? ('0' + d.getDate()) : d.getDate());
+export interface FileResponse {
+    data: Blob;
+    status: number;
+    fileName?: string;
+    headers?: { [name: string]: any };
 }

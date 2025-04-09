@@ -1,0 +1,20 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
+using szerzodeskezelo_api.Data;
+
+public class SzerzodeskezeloDbContextFactory : IDesignTimeDbContextFactory<SzerzodesekezeloDBContext>
+{
+    public SzerzodesekezeloDBContext CreateDbContext(string[] args)
+    {
+        var configuration = new ConfigurationBuilder()
+            .AddConsulConfiguration()
+            .Build();
+
+        var connectionString = configuration.GetConnectionString("DefaultConnection");
+
+        var optionsBuilder = new DbContextOptionsBuilder<SzerzodesekezeloDBContext>();
+        optionsBuilder.UseSqlServer(connectionString);
+
+        return new SzerzodesekezeloDBContext(optionsBuilder.Options);
+    }
+}
