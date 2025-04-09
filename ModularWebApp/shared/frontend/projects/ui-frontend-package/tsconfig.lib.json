@@ -9,6 +9,11 @@
     "inlineSources": true,
     "types": []
   },
+  "paths": {
+    "core-frontend-package": [
+      "projects/core-frontend-package/src/public-api.ts"
+    ]
+  },
   "exclude": [
     "**/*.spec.ts"
   ]

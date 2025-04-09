@@ -1,0 +1,7 @@
+<dx-popup [(visible)]="visible">
+    <div class="p-4">
+        <input [(ngModel)]="loginDTO.username" placeholder="Felhasználónév" class="mb-2 w-full">
+        <input [(ngModel)]="loginDTO.password" placeholder="Jelszó" type="password" class="mb-2 w-full">
+        <button (click)="login()" class="btn btn-primary">Belépés</button>
+    </div>
+</dx-popup>
