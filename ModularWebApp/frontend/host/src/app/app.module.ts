@@ -1,8 +1,11 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import { CoreFrontendModule, ErrorService } from 'core-frontend-package';
+import { UiFrontendModule } from 'ui-frontend-package';
 
 @NgModule({
   declarations: [
@@ -10,9 +13,13 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CoreFrontendModule,
+    UiFrontendModule
   ],
-  providers: [],
+  providers: [
+    { provide: ErrorHandler, useClass: ErrorService }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

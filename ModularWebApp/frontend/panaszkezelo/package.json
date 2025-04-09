@@ -7,7 +7,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
+    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js",
+    "start:big": "node --max-old-space-size=8096 ./node_modules/@angular/cli/bin/ng serve",
+    "build:big": "node --max-old-space-size=4896 ./node_modules/@angular/cli/bin/ng build"
   },
   "private": true,
   "dependencies": {
@@ -21,7 +23,9 @@
     "@angular/router": "^19.2.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.15.0"
+    "zone.js": "~0.15.0",
+    "devextreme": "^24.2.6",
+    "devextreme-angular": "^24.2.6"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.2.5",

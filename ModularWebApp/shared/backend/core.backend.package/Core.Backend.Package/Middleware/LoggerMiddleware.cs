@@ -13,8 +13,8 @@ public class LoggerMiddleware
 
     public async Task InvokeAsync(HttpContext context, ILoggerService loggerService)
     {
-        var correlationId = context.Request.Headers["X-CorrelationID"].FirstOrDefault()
-            ?? Guid.NewGuid().ToString();
+        context.Request.Headers.TryGetValue("X-CorrelationID", out var headerValue);
+        var correlationId = headerValue.FirstOrDefault() ?? Guid.NewGuid().ToString();
 
         context.Items["CorrelationID"] = correlationId;
         context.Response.Headers.TryAdd("X-CorrelationID", correlationId);
