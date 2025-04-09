@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using panaszkezelo_api.Data;
 
@@ -11,9 +12,11 @@ using panaszkezelo_api.Data;
 namespace panaszkezelo_api.Migrations
 {
     [DbContext(typeof(PanaszkezeloDbContext))]
-    partial class PanaszkezeloDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250409093442_UgyfelIdAdd")]
+    partial class UgyfelIdAdd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

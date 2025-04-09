@@ -7,4 +7,5 @@ public class PanaszDto
     public string Leiras { get; set; }
     public DateTime BejelentesDatuma { get; set; }
     public string Statusz { get; set; }
+    public Guid UgyfelId { get; set; }
 }
