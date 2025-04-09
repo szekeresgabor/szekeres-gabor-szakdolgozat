@@ -30,6 +30,17 @@ public static class WebApplicationBuilderExtensions
 
         });
 
+        // CORS policy beállítás
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("AllowFrontend", policy =>
+            {
+                policy.WithOrigins("http://localhost:4200")
+                      .AllowAnyHeader()
+                      .AllowAnyMethod();
+            });
+        });
+
         // Consul konfiguráció
         builder.Configuration.AddConsulConfiguration();
 
@@ -72,6 +83,9 @@ public static class WebApplicationBuilderExtensions
 
         //JWT kezelés add
         app.UseJwtPermission();
+
+        //Cors engedélyezése
+        app.UseCors("AllowFrontend");
 
         return app;
     }
