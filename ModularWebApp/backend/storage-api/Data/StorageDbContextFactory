@@ -1,0 +1,20 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
+using storage_api.Data;
+
+public class StorageDbContextFactory : IDesignTimeDbContextFactory<StorageDbContext>
+{
+    public StorageDbContext CreateDbContext(string[] args)
+    {
+        var configuration = new ConfigurationBuilder()
+            .AddConsulConfiguration()
+            .Build();
+
+        var connectionString = configuration.GetConnectionString("DefaultConnection");
+
+        var optionsBuilder = new DbContextOptionsBuilder<StorageDbContext>();
+        optionsBuilder.UseSqlServer(connectionString);
+
+        return new StorageDbContext(optionsBuilder.Options);
+    }
+}

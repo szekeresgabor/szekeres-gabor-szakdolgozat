@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "storage-api", "storage-api.csproj", "{EB67748B-5F6B-6E56-91CB-B75583455BE5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB67748B-5F6B-6E56-91CB-B75583455BE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB67748B-5F6B-6E56-91CB-B75583455BE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB67748B-5F6B-6E56-91CB-B75583455BE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB67748B-5F6B-6E56-91CB-B75583455BE5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D59B8CBA-7266-4F67-890F-4D4AF6D0EF6E}
+	EndGlobalSection
+EndGlobal
