@@ -1,7 +1,23 @@
-<div class="layout">
-    <header class="p-4 bg-gray-800 text-white">Fejléc</header>
-    <main class="p-4">
+<!-- Fejléc -->
+<dx-toolbar class="app-toolbar">
+    <dxi-item location="before">
+        <div class="logo">Szekeres Gábor - EYC 048</div>
+    </dxi-item>
+
+    <dxi-item location="after">
+        <dx-menu class="main-menu" [items]="menuItems" displayExpr="text" (onItemClick)="navigate($event)">
+        </dx-menu>
+    </dxi-item>
+</dx-toolbar>
+
+<!-- Tartalom -->
+<div class="content-wrapper">
+    <div class="content-card">
         <ng-content></ng-content>
-    </main>
-    <footer class="p-4 bg-gray-100 text-center text-sm text-gray-500">Lábléc</footer>
+    </div>
 </div>
+
+<!-- Lábléc -->
+<footer class="footer">
+    <p>&copy; 2025 - Szekeres Gábor - EYC 048</p>
+</footer>

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DxPopupModule, DxFileUploaderModule } from 'devextreme-angular';
+import { DxPopupModule, DxFileUploaderModule, DxToolbarModule, DxMenuModule, DxTextBoxModule, DxButtonModule, DxValidatorModule } from 'devextreme-angular';
 
 import { LoginPopupComponent } from './components/login-popup/login-popup.component';
 import { ErrorPopupComponent } from './components/error-popup/error-popup.component';
@@ -19,7 +19,13 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     FormsModule,
     DxPopupModule,
-    DxFileUploaderModule
+    DxFileUploaderModule,
+    DxToolbarModule,
+    DxMenuModule,
+    DxTextBoxModule,
+    DxButtonModule,
+    DxValidatorModule,
+    DxValidatorModule
   ],
   exports: [
     LoginPopupComponent,

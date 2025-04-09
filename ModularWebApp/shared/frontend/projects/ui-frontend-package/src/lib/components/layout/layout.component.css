@@ -1,0 +1,61 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #f5f7fa;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.app-toolbar {
+    background-color: #2a3f54;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 49px;
+}
+
+.logo {
+    font-size: 1.3rem;
+    font-weight: 600;
+    line-height: 49px;
+    color: #fff;
+    padding-left: 1rem;
+}
+
+.main-menu ::ng-deep .dx-menu-horizontal {
+    background: transparent;
+}
+
+.main-menu ::ng-deep .dx-menu-item {
+    color: white;
+    padding: 0.5rem 1rem;
+    transition: background 0.3s;
+}
+
+.main-menu ::ng-deep .dx-menu-item.dx-state-hover {
+    background-color: #1a2732;
+}
+
+.content-wrapper {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.content-card {
+    background: white;
+    padding: 2rem;
+    max-width: 800px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+    background: #2a3f54;
+    color: #ddd;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+}

@@ -1,0 +1,21 @@
+.error-popup-content {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.error-message {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #e53935;
+    margin-bottom: 0.5rem;
+}
+
+.error-code {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.ok-button {
+    margin-top: 1rem;
+}

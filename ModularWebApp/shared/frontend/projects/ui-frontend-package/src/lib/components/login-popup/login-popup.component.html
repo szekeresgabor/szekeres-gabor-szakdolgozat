@@ -1,7 +1,22 @@
-<dx-popup [(visible)]="visible">
-    <div class="p-4">
-        <input [(ngModel)]="loginDTO.username" placeholder="Felhasználónév" class="mb-2 w-full">
-        <input [(ngModel)]="loginDTO.password" placeholder="Jelszó" type="password" class="mb-2 w-full">
-        <button (click)="login()" class="btn btn-primary">Belépés</button>
+<dx-popup [(visible)]="visible" [showTitle]="true" [title]="'Bejelentkezés'" [width]="400" [height]="'auto'"
+    [dragEnabled]="false" [closeOnOutsideClick]="true">
+
+    <div class="login-popup-content">
+        <dx-text-box [value]="loginDTO.username || ''" (onValueChanged)="loginDTO.username = $event.value"
+            placeholder="Felhasználónév" class="mb-3" [showClearButton]="true">
+            <dx-validator>
+                <dxi-validation-rule type="required" message="Kötelező mező"></dxi-validation-rule>
+            </dx-validator>
+        </dx-text-box>
+
+        <dx-text-box [value]="loginDTO.password || ''" (onValueChanged)="loginDTO.password = $event.value"
+            placeholder="Jelszó" mode="password" class="mb-3" [showClearButton]="true">
+            <dx-validator>
+                <dxi-validation-rule type="required" message="Kötelező mező"></dxi-validation-rule>
+            </dx-validator>
+        </dx-text-box>
+
+        <dx-button text="Belépés" type="default" stylingMode="contained" width="100%" (onClick)="login()">
+        </dx-button>
     </div>
 </dx-popup>

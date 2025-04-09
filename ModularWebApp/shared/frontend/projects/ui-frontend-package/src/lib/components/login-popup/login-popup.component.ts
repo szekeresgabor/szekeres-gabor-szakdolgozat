@@ -9,9 +9,6 @@ import { IdentityService, LoginRequest } from 'core-frontend-package';
 })
 export class LoginPopupComponent {
   visible = true;
-  username = '';
-  password = '';
-
   loginDTO: LoginRequest = new LoginRequest();
 
   constructor(private identity: IdentityService) {
@@ -20,6 +17,10 @@ export class LoginPopupComponent {
   }
 
   login(): void {
-    this.identity.login(this.loginDTO).subscribe();
+    this.identity.login(this.loginDTO).subscribe((token: string) => {
+      if (token) {
+        this.visible = false;
+      }
+    });
   }
 }

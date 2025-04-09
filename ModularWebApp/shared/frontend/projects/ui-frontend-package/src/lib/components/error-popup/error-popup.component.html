@@ -1,6 +1,14 @@
-<dx-popup [(visible)]="visible">
-    <div class="p-4">
-        <p class="text-red-600 font-bold">{{message}}</p>
-        <p class="text-sm text-gray-500">Hibakód: {{correlationId}}</p>
+<dx-popup [(visible)]="visible" [showTitle]="true" [title]="'Hiba történt'" [width]="400" [height]="'auto'"
+    [dragEnabled]="false" [closeOnOutsideClick]="true" [showCloseButton]="true"
+    [animation]="{ show: { type: 'fade', duration: 200 }, hide: { type: 'fade', duration: 200 } }">
+
+    <div class="error-popup-content">
+
+        <p class="error-message">{{ message }}</p>
+        <p class="error-code">Hibakód: {{ correlationId }}</p>
+
+        <dx-button text="OK" type="normal" stylingMode="outlined" class="ok-button" width="100%"
+            (onClick)="visible = false">
+        </dx-button>
     </div>
 </dx-popup>
