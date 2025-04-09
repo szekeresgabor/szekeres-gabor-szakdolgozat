@@ -29,6 +29,15 @@
 						"polyfills": [
 							"zone.js"
 						],
+						"allowedCommonJsDependencies": [
+							"devextreme",
+							"devextreme-angular",
+							"devextreme-quill",
+							"jszip",
+							"devexpress-diagram",
+							"devexpress-gantt",
+							"@angular-architects/module-federation"
+						],
 						"tsConfig": "tsconfig.app.json",
 						"inlineStyleLanguage": "scss",
 						"assets": [
