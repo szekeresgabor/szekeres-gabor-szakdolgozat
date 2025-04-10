@@ -35,7 +35,7 @@ export class FileUploaderComponent {
       next: (res: HttpEvent<any>) => {
         if (res.type === HttpEventType.Response) {
           const response = res as HttpResponse<any>;
-          const id = response.body?.id ?? this.extractIdFromResponse(response);
+          const id = response.body?.id;
           if (id) {
             this.fileUploaded.emit({ id, name: this.selectedFile!.name });
             this.selectedFile = null;
@@ -46,14 +46,5 @@ export class FileUploaderComponent {
         console.error('Feltöltés sikertelen', err);
       }
     });
-  }
-
-  private extractIdFromResponse(res: HttpResponse<any>): string | null {
-    const location = res.headers?.get('Location');
-    if (location) {
-      const parts = location.split('/');
-      return parts[parts.length - 1];
-    }
-    return null;
   }
 }
