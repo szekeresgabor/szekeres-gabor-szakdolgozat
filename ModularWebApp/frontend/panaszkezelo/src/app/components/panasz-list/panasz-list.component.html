@@ -1,0 +1,10 @@
+<div class="p-4">
+    <dx-button text="Új panasz" (onClick)="newPanasz()" class="mr-2"></dx-button>
+    <dx-button text="Szerkesztés" (onClick)="editPanasz()" [disabled]="!selectedRow"></dx-button>
+    <dx-button text="Törlés" (onClick)="deletePanasz()" [disabled]="!selectedRow" class="ml-2"></dx-button>
+    <dx-data-grid [dataSource]="panaszok" (onSelectionChanged)="selectedRow = $event.selectedRowsData[0]"
+        [selection]="{ mode: 'single' }" [columns]="['cim', 'statusz', 'bejelentesDatuma']" class="mt-4"></dx-data-grid>
+</div>
+
+<app-panasz-editor [visible]="popupVisible" [panasz]="szerkesztendoPanasz" (closed)="popupVisible = false"
+    (saved)="onPanaszSaved()"></app-panasz-editor>

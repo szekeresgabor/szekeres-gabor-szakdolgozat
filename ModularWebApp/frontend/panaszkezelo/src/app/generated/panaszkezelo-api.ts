@@ -16,6 +16,7 @@ export class PanaszDto implements IPanaszDto {
     leiras?: string;
     bejelentesDatuma?: Date;
     statusz?: string;
+    ugyfelId?: string;
 
     constructor(data?: IPanaszDto) {
         if (data) {
@@ -33,6 +34,7 @@ export class PanaszDto implements IPanaszDto {
             this.leiras = _data["leiras"];
             this.bejelentesDatuma = _data["bejelentesDatuma"] ? new Date(_data["bejelentesDatuma"].toString()) : <any>undefined;
             this.statusz = _data["statusz"];
+            this.ugyfelId = _data["ugyfelId"];
         }
     }
 
@@ -50,6 +52,7 @@ export class PanaszDto implements IPanaszDto {
         data["leiras"] = this.leiras;
         data["bejelentesDatuma"] = this.bejelentesDatuma ? this.bejelentesDatuma.toISOString() : <any>undefined;
         data["statusz"] = this.statusz;
+        data["ugyfelId"] = this.ugyfelId;
         return data;
     }
 }
@@ -60,6 +63,7 @@ export interface IPanaszDto {
     leiras?: string;
     bejelentesDatuma?: Date;
     statusz?: string;
+    ugyfelId?: string;
 }
 
 export interface FileResponse {

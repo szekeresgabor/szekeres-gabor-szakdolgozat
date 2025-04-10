@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, interval, Observable, Subscription } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { LoginRequest } from '../generated/identity-api';
 
 @Injectable({ providedIn: 'root' })
@@ -28,17 +28,19 @@ export class IdentityService {
   }
 
   login(data: LoginRequest): Observable<string> {
-    return this.http.post(this.baseUrl + '/login', data, { responseType: 'text' }).pipe(
-      tap(token => {
-        this.setToken(token);
+    return this.http.post<{ token: string }>(this.baseUrl + '/login', data).pipe(
+      tap(response => {
+        this.setToken(response.token);
         this.startRenewTimer();
-      })
+      }),
+      map(response => response.token)
     );
   }
 
   renew(): Observable<string> {
-    return this.http.post(this.baseUrl + '/renew', {}, { responseType: 'text' }).pipe(
-      tap(token => this.setToken(token))
+    return this.http.post<{ token: string }>(this.baseUrl + '/renew', {}).pipe(
+      tap(response => this.setToken(response.token)),
+      map(response => response.token)
     );
   }
 

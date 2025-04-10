@@ -8,7 +8,6 @@ using ugyfelkezelo_api.Services;
 [ApiController]
 [Route("api/[controller]")]
 [Authorize]
-[RoleRequired("ugyfelkezelo")]
 public class UgyfelController : ControllerBase
 {
     private readonly IUgyfelService _service;
@@ -21,6 +20,7 @@ public class UgyfelController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAll() => Ok(await _service.GetAllAsync());
 
+    [RoleRequired("ugyfelkezelo")]
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(Guid id)
     {
@@ -28,6 +28,7 @@ public class UgyfelController : ControllerBase
         return result is null ? NotFound() : Ok(result);
     }
 
+    [RoleRequired("ugyfelkezelo")]
     [HttpPost]
     public async Task<IActionResult> Create(UgyfelDto dto)
     {
@@ -35,6 +36,7 @@ public class UgyfelController : ControllerBase
         return Ok(new { id });
     }
 
+    [RoleRequired("ugyfelkezelo")]
     [HttpPut("{id}")]
     public async Task<IActionResult> Update(Guid id, UgyfelDto dto)
     {
@@ -42,6 +44,7 @@ public class UgyfelController : ControllerBase
         return updated ? Ok() : NotFound();
     }
 
+    [RoleRequired("ugyfelkezelo")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(Guid id)
     {

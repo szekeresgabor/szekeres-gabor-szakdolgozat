@@ -13,3 +13,5 @@ export * from './lib/interceptors/jwt.interceptor';
 export * from './lib/core-frontend.module';
 
 export * from './lib/generated/identity-api';
+
+export * from './lib/services/ugyfel-shared.service';
