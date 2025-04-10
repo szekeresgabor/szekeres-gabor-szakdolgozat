@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { HttpEvent, HttpEventType, HttpResponse } from '@angular/common/http';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { StorageService } from 'core-frontend-package';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'uip-file-uploader',
@@ -8,12 +10,50 @@ import { StorageService } from 'core-frontend-package';
   styleUrl: './file-uploader.component.css'
 })
 export class FileUploaderComponent {
+  @Output() fileUploaded = new EventEmitter<{ id: string, name: string }>();
+
+  selectedFile: File | null = null;
+  uploading = false;
+
   constructor(private storage: StorageService) { }
 
-  onUpload(event: any): void {
-    const file = event.file;
+  onFileSelected(event: any): void {
+    const file = event.value?.[0];
     if (file) {
-      this.storage.uploadFile(file).subscribe();
+      this.selectedFile = file;
     }
+  }
+
+  uploadSelectedFile(): void {
+    if (!this.selectedFile) return;
+
+    this.uploading = true;
+
+    this.storage.uploadFile(this.selectedFile).pipe(
+      finalize(() => this.uploading = false)
+    ).subscribe({
+      next: (res: HttpEvent<any>) => {
+        if (res.type === HttpEventType.Response) {
+          const response = res as HttpResponse<any>;
+          const id = response.body?.id ?? this.extractIdFromResponse(response);
+          if (id) {
+            this.fileUploaded.emit({ id, name: this.selectedFile!.name });
+            this.selectedFile = null;
+          }
+        }
+      },
+      error: err => {
+        console.error('Feltöltés sikertelen', err);
+      }
+    });
+  }
+
+  private extractIdFromResponse(res: HttpResponse<any>): string | null {
+    const location = res.headers?.get('Location');
+    if (location) {
+      const parts = location.split('/');
+      return parts[parts.length - 1];
+    }
+    return null;
   }
 }

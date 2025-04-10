@@ -36,4 +36,10 @@ public class FileController : ControllerBase
         var success = await _storageService.DeleteFileAsync(id);
         return success ? Ok() : NotFound();
     }
+
+    [HttpGet("name/{id}")]
+    public async Task<string> GetFileName(Guid id)
+    {
+        return await _storageService.GetFileNameAsync(id);
+    }
 }

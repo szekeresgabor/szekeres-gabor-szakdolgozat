@@ -37,8 +37,17 @@
         </div>
 
         <div class="form-group">
-            <label for="dokumentumId">Dokumentum ID (opcionális)</label>
-            <dx-text-box [(value)]="szerkesztes.dokumentumId" id="dokumentumId" class="input-full"></dx-text-box>
+            <label>Dokumentum</label>
+
+            <div *ngIf="szerkesztes.dokumentumId && dokumentumFileName">
+                <p><strong>Fájl:</strong> {{ dokumentumFileName }}</p>
+                <dx-button text="Letöltés" (onClick)="downloadFile()" class="mr-2"></dx-button>
+                <dx-button text="Törlés" (onClick)="deleteFile()" stylingMode="text" type="danger"></dx-button>
+            </div>
+
+            <div *ngIf="!szerkesztes.dokumentumId">
+                <uip-file-uploader (fileUploaded)="onFileUploaded($event)"></uip-file-uploader>
+            </div>
         </div>
 
         <div class="button-container">

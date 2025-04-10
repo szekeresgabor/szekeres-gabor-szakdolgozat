@@ -1,1 +1,5 @@
-<dx-file-uploader (onUploaded)="onUpload($event)" [uploadMode]="'useButtons'"></dx-file-uploader>
+<dx-file-uploader [uploadMode]="'useForm'" [multiple]="false" [showFileList]="true"
+    [selectButtonText]="'Fájl kiválasztása'" (onValueChanged)="onFileSelected($event)">
+</dx-file-uploader>
+
+<dx-button *ngIf="selectedFile" text="Feltöltés" type="default" (onClick)="uploadSelectedFile()"></dx-button>

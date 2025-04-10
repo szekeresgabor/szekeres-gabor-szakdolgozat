@@ -35,4 +35,13 @@ export class StorageService {
   deleteFile(id: string): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
+
+  /**
+   * Fájl név lekérdezése
+   */
+  getFileName(id: string): Observable<string> {
+    return this.http.get(`${this.baseUrl}/name/${id}`, {
+      responseType: 'text'
+    });
+  }
 }

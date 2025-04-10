@@ -1,0 +1,76 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ModularWebApp", "ModularWebApp", "{F664DC6A-0586-9891-CC8B-45E592BF32FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{F3DB4EC5-10CF-A8E7-02A7-070F5DD5F75A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "szerzodeskezelo-api", "ModularWebApp\backend\szerzodeskezelo-api\szerzodeskezelo-api.csproj", "{4779F8FC-7D1F-48AB-738B-F4F0C69B2323}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "storage-api", "ModularWebApp\backend\storage-api\storage-api.csproj", "{5FDD8AE8-44F3-69C7-9B62-981F7E7D6596}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "identity-api", "ModularWebApp\backend\identity-api\identity-api.csproj", "{A241BE75-84C8-E198-9522-D78967591E21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "panaszkezelo-api", "ModularWebApp\backend\panaszkezelo-api\panaszkezelo-api.csproj", "{F83DD1B9-F262-99CA-FAC5-8C83E26CA300}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ugyfelkezelo-api", "ModularWebApp\backend\ugyfelkezelo-api\ugyfelkezelo-api.csproj", "{72AA6051-0FAB-58CB-57B2-6DCD9EED73DB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{2455C855-2078-B069-FD29-EF1C2935C71D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{69BB5503-5D08-CE19-B063-7EE5D24C37E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core.backend.package", "core.backend.package", "{4F2EF07C-09A7-EFA3-FA16-5EBBBE5AB53C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Backend.Package", "ModularWebApp\shared\backend\core.backend.package\Core.Backend.Package\Core.Backend.Package.csproj", "{2FFD5899-9F37-7977-0D6D-8B6AB0F668D1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4779F8FC-7D1F-48AB-738B-F4F0C69B2323}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4779F8FC-7D1F-48AB-738B-F4F0C69B2323}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4779F8FC-7D1F-48AB-738B-F4F0C69B2323}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4779F8FC-7D1F-48AB-738B-F4F0C69B2323}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FDD8AE8-44F3-69C7-9B62-981F7E7D6596}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FDD8AE8-44F3-69C7-9B62-981F7E7D6596}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FDD8AE8-44F3-69C7-9B62-981F7E7D6596}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FDD8AE8-44F3-69C7-9B62-981F7E7D6596}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A241BE75-84C8-E198-9522-D78967591E21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A241BE75-84C8-E198-9522-D78967591E21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A241BE75-84C8-E198-9522-D78967591E21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A241BE75-84C8-E198-9522-D78967591E21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F83DD1B9-F262-99CA-FAC5-8C83E26CA300}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F83DD1B9-F262-99CA-FAC5-8C83E26CA300}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F83DD1B9-F262-99CA-FAC5-8C83E26CA300}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F83DD1B9-F262-99CA-FAC5-8C83E26CA300}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72AA6051-0FAB-58CB-57B2-6DCD9EED73DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72AA6051-0FAB-58CB-57B2-6DCD9EED73DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72AA6051-0FAB-58CB-57B2-6DCD9EED73DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72AA6051-0FAB-58CB-57B2-6DCD9EED73DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FFD5899-9F37-7977-0D6D-8B6AB0F668D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FFD5899-9F37-7977-0D6D-8B6AB0F668D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FFD5899-9F37-7977-0D6D-8B6AB0F668D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FFD5899-9F37-7977-0D6D-8B6AB0F668D1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F3DB4EC5-10CF-A8E7-02A7-070F5DD5F75A} = {F664DC6A-0586-9891-CC8B-45E592BF32FD}
+		{4779F8FC-7D1F-48AB-738B-F4F0C69B2323} = {F3DB4EC5-10CF-A8E7-02A7-070F5DD5F75A}
+		{5FDD8AE8-44F3-69C7-9B62-981F7E7D6596} = {F3DB4EC5-10CF-A8E7-02A7-070F5DD5F75A}
+		{A241BE75-84C8-E198-9522-D78967591E21} = {F3DB4EC5-10CF-A8E7-02A7-070F5DD5F75A}
+		{F83DD1B9-F262-99CA-FAC5-8C83E26CA300} = {F3DB4EC5-10CF-A8E7-02A7-070F5DD5F75A}
+		{72AA6051-0FAB-58CB-57B2-6DCD9EED73DB} = {F3DB4EC5-10CF-A8E7-02A7-070F5DD5F75A}
+		{2455C855-2078-B069-FD29-EF1C2935C71D} = {F664DC6A-0586-9891-CC8B-45E592BF32FD}
+		{69BB5503-5D08-CE19-B063-7EE5D24C37E8} = {2455C855-2078-B069-FD29-EF1C2935C71D}
+		{4F2EF07C-09A7-EFA3-FA16-5EBBBE5AB53C} = {69BB5503-5D08-CE19-B063-7EE5D24C37E8}
+		{2FFD5899-9F37-7977-0D6D-8B6AB0F668D1} = {4F2EF07C-09A7-EFA3-FA16-5EBBBE5AB53C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4DDF775C-CEF5-4B9D-802B-FFF7545BC525}
+	EndGlobalSection
+EndGlobal

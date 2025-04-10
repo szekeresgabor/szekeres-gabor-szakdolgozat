@@ -70,4 +70,10 @@ public class StorageService : IStorageService
 
         return true;
     }
+
+    public async Task<string> GetFileNameAsync(Guid id)
+    {
+        var file = await _repository.GetByIdAsync(id);
+        return file.FileName;
+    }
 }

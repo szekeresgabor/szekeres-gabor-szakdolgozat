@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { UgyfelSharedDto, UgyfelSharedService } from 'core-frontend-package';
+import { StorageService, UgyfelSharedDto, UgyfelSharedService } from 'core-frontend-package';
 import { SzerzodesDto } from '../../generated/szerzodeskezelo-api';
 import { SzerzodesService } from '../../services/szerzodes.service';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-szerzodes-editor',
@@ -18,9 +19,13 @@ export class SzerzodesEditorComponent {
   szerkesztes: SzerzodesDto = this.getEmpty();
   ugyfelek: UgyfelSharedDto[] = [];
 
+  dokumentumFileName: string | null = null;
+  dokumentumBetoltve = false;
+
   constructor(
     private szerzodesService: SzerzodesService,
-    private ugyfelService: UgyfelSharedService
+    private ugyfelService: UgyfelSharedService,
+    private storage: StorageService
   ) { }
 
   ngOnChanges(): void {
@@ -29,6 +34,12 @@ export class SzerzodesEditorComponent {
     });
 
     this.szerkesztes = this.szerzodes ? this.szerzodes : this.getEmpty();
+
+    if (this.szerkesztes.dokumentumId) {
+      this.loadFileName(this.szerkesztes.dokumentumId);
+    } else {
+      this.dokumentumFileName = null;
+    }
   }
 
   save(): void {
@@ -56,5 +67,44 @@ export class SzerzodesEditorComponent {
       dokumentumId: null,
       osszeg: 0
     });
+  }
+
+  onFileUploaded(event: { id: string, name: string }): void {
+    this.szerkesztes.dokumentumId = event.id;
+    this.dokumentumFileName = event.name;
+  }
+
+  loadFileName(id: string): void {
+    this.dokumentumBetoltve = true;
+    this.storage.getFileName(id).subscribe({
+      next: (name) => {
+        this.dokumentumFileName = name;
+      }
+    });
+  }
+
+  deleteFile(): void {
+    if (this.szerkesztes.dokumentumId) {
+      this.storage.deleteFile(this.szerkesztes.dokumentumId).subscribe({
+        next: () => {
+          this.szerkesztes.dokumentumId = null;
+          this.dokumentumFileName = null;
+          this.save();
+        }
+      });
+    }
+  }
+
+  downloadFile(): void {
+    if (this.szerkesztes.dokumentumId) {
+      this.storage.downloadFile(this.szerkesztes.dokumentumId).subscribe(blob => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = this.dokumentumFileName || 'dokumentum';
+        a.click();
+        window.URL.revokeObjectURL(url);
+      });
+    }
   }
 }
