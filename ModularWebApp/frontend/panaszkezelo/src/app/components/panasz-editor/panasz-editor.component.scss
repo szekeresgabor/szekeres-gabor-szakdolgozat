@@ -1,0 +1,27 @@
+.editor-container {
+    padding: 24px;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #333;
+}
+
+.input-full {
+    width: 100%;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 24px;
+}

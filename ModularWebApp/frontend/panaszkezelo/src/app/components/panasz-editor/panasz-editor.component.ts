@@ -54,7 +54,7 @@ export class PanaszEditorComponent {
       cim: '',
       leiras: '',
       bejelentesDatuma: new Date(),
-      statusz: 'Új',
+      statusz: '',
       ugyfelId: '',
     });
   }

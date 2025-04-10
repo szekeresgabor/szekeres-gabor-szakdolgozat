@@ -1,15 +1,36 @@
 <dx-popup [visible]="visible" [showCloseButton]="true" [showTitle]="true"
-    [title]="szerkesztes.id ? 'Panasz szerkesztése' : 'Új panasz'" [width]="600" [height]="500" (onHiding)="close()">
-    <div class="p-4">
-        <dx-text-box [(value)]="szerkesztes.cim" placeholder="Cím" class="w-full"></dx-text-box>
-        <dx-text-area [(value)]="szerkesztes.leiras" placeholder="Leírás" class="mt-2 w-full"></dx-text-area>
-        <dx-date-box [(value)]="szerkesztes.bejelentesDatuma" class="mt-2 w-full"></dx-date-box>
-        <dx-select-box [(value)]="szerkesztes.statusz" [items]="['Új', 'Folyamatban', 'Lezárt']" class="mt-2 w-full"
-            placeholder="Válassz státuszt"></dx-select-box>
-        <dx-select-box [items]="ugyfelek" [value]="szerkesztes.ugyfelId"
-            (onValueChanged)="szerkesztes.ugyfelId = $event.value" [valueExpr]="'id'" [displayExpr]="'nev'"
-            placeholder="Válassz ügyfelet" class="mt-2 w-full"></dx-select-box>
+    [title]="szerkesztes.id ? 'Panasz szerkesztése' : 'Új panasz'" [width]="600" [height]="'auto'" (onHiding)="close()">
+    <div class="editor-container">
+        <div class="form-group">
+            <label for="cim">Cím</label>
+            <dx-text-box [(value)]="szerkesztes.cim" id="cim" class="input-full"></dx-text-box>
+        </div>
 
-        <dx-button text="Mentés" (onClick)="save()" class="mt-4"></dx-button>
+        <div class="form-group">
+            <label for="leiras">Leírás</label>
+            <dx-text-area [(value)]="szerkesztes.leiras" id="leiras" class="input-full"></dx-text-area>
+        </div>
+
+        <div class="form-group">
+            <label for="datum">Bejelentés dátuma</label>
+            <dx-date-box [(value)]="szerkesztes.bejelentesDatuma" id="datum" class="input-full"></dx-date-box>
+        </div>
+
+        <div class="form-group">
+            <label for="statusz">Státusz</label>
+            <dx-select-box [(value)]="szerkesztes.statusz" [items]="['Új', 'Folyamatban', 'Lezárt']" id="statusz"
+                class="input-full" placeholder="Kérem válasszon"></dx-select-box>
+        </div>
+
+        <div class="form-group">
+            <label for="ugyfel">Ügyfél</label>
+            <dx-select-box [items]="ugyfelek" [value]="szerkesztes.ugyfelId"
+                (onValueChanged)="szerkesztes.ugyfelId = $event.value" [valueExpr]="'id'" [displayExpr]="'nev'"
+                id="ugyfel" class="input-full" placeholder="Kérem válasszon"></dx-select-box>
+        </div>
+
+        <div class="button-container">
+            <dx-button text="Mentés" (onClick)="save()" stylingMode="contained" type="default"></dx-button>
+        </div>
     </div>
 </dx-popup>
