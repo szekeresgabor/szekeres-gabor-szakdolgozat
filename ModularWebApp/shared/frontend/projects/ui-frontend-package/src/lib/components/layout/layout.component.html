@@ -4,8 +4,17 @@
         <div class="logo">Szekeres Gábor - EYC 048</div>
     </dxi-item>
 
-    <dxi-item location="after">
-        <dx-menu class="main-menu" [items]="menuItems" displayExpr="text" (onItemClick)="navigate($event)">
+    <dxi-item location="after" *ngIf="isAuthenticated">
+        <div class="user-info">
+            {{ username }}
+            <dx-button text="Kilépés" icon="runner" type="normal" stylingMode="text" class="logout-button"
+                (onClick)="logout()">
+            </dx-button>
+        </div>
+    </dxi-item>
+
+    <dxi-item location="after" *ngIf="isAuthenticated">
+        <dx-menu class="main-menu" [items]="filteredMenuItems" displayExpr="text" (onItemClick)="navigate($event)">
         </dx-menu>
     </dxi-item>
 </dx-toolbar>

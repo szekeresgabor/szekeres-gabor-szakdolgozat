@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MenuService } from './services/menu.service';
+import { MenuItem } from 'ui-frontend-package';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +10,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'host';
+
+  _menuItems: MenuItem[] = [];
+
+  constructor(private menuService: MenuService) {
+    this._menuItems = menuService.menuItems;
+  }
 }
