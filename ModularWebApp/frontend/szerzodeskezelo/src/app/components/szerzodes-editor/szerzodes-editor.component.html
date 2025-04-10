@@ -1,0 +1,48 @@
+<dx-popup [visible]="visible" [showCloseButton]="true" [showTitle]="true"
+    [title]="szerkesztes.id ? 'Szerződés szerkesztése' : 'Új szerződés'" [width]="600" [height]="'auto'"
+    (onHiding)="close()">
+    <div class="editor-container">
+        <div class="form-group">
+            <label for="azonosito">Azonosító</label>
+            <dx-text-box [(value)]="szerkesztes.azonosito" id="azonosito" class="input-full"></dx-text-box>
+        </div>
+
+        <div class="form-group">
+            <label for="kotesDatuma">Kötés dátuma</label>
+            <dx-date-box [(value)]="szerkesztes.kotesDatuma" id="kotesDatuma" class="input-full"></dx-date-box>
+        </div>
+
+        <div class="form-group">
+            <label for="lejaratDatuma">Lejárat dátuma</label>
+            <dx-date-box [(value)]="szerkesztes.lejaratDatuma" id="lejaratDatuma" class="input-full"
+                [type]="'date'"></dx-date-box>
+        </div>
+
+        <div class="form-group">
+            <label for="osszeg">Összeg</label>
+            <dx-number-box [(value)]="szerkesztes.osszeg" id="osszeg" class="input-full"
+                [showSpinButtons]="true"></dx-number-box>
+        </div>
+
+        <div class="form-group">
+            <label for="ugyfel">Ügyfél</label>
+            <dx-select-box [items]="ugyfelek" [value]="szerkesztes.ugyfelId"
+                (onValueChanged)="szerkesztes.ugyfelId = $event.value" [valueExpr]="'id'" [displayExpr]="'nev'"
+                id="ugyfel" class="input-full" placeholder="Kérem válasszon"></dx-select-box>
+        </div>
+
+        <div class="form-group">
+            <label for="megjegyzes">Megjegyzés</label>
+            <dx-text-area [(value)]="szerkesztes.megjegyzes" id="megjegyzes" class="input-full"></dx-text-area>
+        </div>
+
+        <div class="form-group">
+            <label for="dokumentumId">Dokumentum ID (opcionális)</label>
+            <dx-text-box [(value)]="szerkesztes.dokumentumId" id="dokumentumId" class="input-full"></dx-text-box>
+        </div>
+
+        <div class="button-container">
+            <dx-button text="Mentés" (onClick)="save()" stylingMode="contained" type="default"></dx-button>
+        </div>
+    </div>
+</dx-popup>

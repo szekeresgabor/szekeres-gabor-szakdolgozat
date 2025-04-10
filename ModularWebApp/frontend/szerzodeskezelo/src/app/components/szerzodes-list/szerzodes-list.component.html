@@ -1,0 +1,11 @@
+<div class="p-4">
+    <dx-button text="Új szerződés" (onClick)="newSzerzodes()" class="mr-2"></dx-button>
+    <dx-button text="Szerkesztés" (onClick)="editSzerzodes()" [disabled]="!selectedRow"></dx-button>
+    <dx-button text="Törlés" (onClick)="deleteSzerzodes()" [disabled]="!selectedRow" class="ml-2"></dx-button>
+
+    <dx-data-grid [dataSource]="szerzodesek" (onSelectionChanged)="selectedRow = $event.selectedRowsData[0]"
+        [selection]="{ mode: 'single' }" [columns]="['azonosito', 'kotesDatuma', 'osszeg']" class="mt-4"></dx-data-grid>
+</div>
+
+<app-szerzodes-editor [visible]="popupVisible" [szerzodes]="szerkesztendoSzerzodes" (closed)="popupVisible = false"
+    (saved)="onSzerzodesSaved()"></app-szerzodes-editor>
