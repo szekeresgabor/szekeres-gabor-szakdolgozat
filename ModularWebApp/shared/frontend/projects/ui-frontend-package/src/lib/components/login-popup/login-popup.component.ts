@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IdentityService, LoginRequest } from 'core-frontend-package';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'uip-login-popup',
@@ -11,13 +12,19 @@ export class LoginPopupComponent {
   visible = true;
   loginDTO: LoginRequest = new LoginRequest();
 
-  constructor(private identity: IdentityService) {
-    this.visible = identity.getToken() ? false : true;
+  destroy$: Subject<void> = new Subject<void>();
+
+  constructor(private identityService: IdentityService) {
+    this.identityService.username$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(name => {
+        this.visible = !name;
+      });
 
   }
 
   login(): void {
-    this.identity.login(this.loginDTO).subscribe((token: string) => {
+    this.identityService.login(this.loginDTO).subscribe((token: string) => {
       if (token) {
         this.visible = false;
       }

@@ -21,12 +21,22 @@
     padding-left: 1rem;
 }
 
+.toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
 .user-info {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    padding-left: 1rem;
+    margin-left: 1rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    gap: 0.75rem;
     color: #fff;
     font-weight: 500;
+    font-size: 0.95rem;
 }
 
 .logout-button {
