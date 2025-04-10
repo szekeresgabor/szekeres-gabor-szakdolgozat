@@ -1,0 +1,23 @@
+<dx-popup [visible]="visible" [showCloseButton]="true" [showTitle]="true"
+    [title]="szerkesztes.id ? 'Ügyfél szerkesztése' : 'Új ügyfél'" [width]="600" [height]="'auto'" (onHiding)="close()">
+    <div class="editor-container">
+        <div class="form-group">
+            <label for="nev">Név</label>
+            <dx-text-box [(value)]="szerkesztes.nev" id="nev" class="input-full"></dx-text-box>
+        </div>
+
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <dx-text-box [(value)]="szerkesztes.email" id="email" class="input-full"></dx-text-box>
+        </div>
+
+        <div class="form-group">
+            <label for="telefonszam">Telefonszám</label>
+            <dx-text-box [(value)]="szerkesztes.telefonszam" id="telefonszam" class="input-full"></dx-text-box>
+        </div>
+
+        <div class="button-container">
+            <dx-button text="Mentés" (onClick)="save()" stylingMode="contained" type="default"></dx-button>
+        </div>
+    </div>
+</dx-popup>

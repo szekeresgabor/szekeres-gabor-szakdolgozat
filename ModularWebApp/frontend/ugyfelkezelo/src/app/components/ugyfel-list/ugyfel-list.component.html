@@ -1,0 +1,11 @@
+<div class="p-4">
+    <dx-button text="Új ügyfél" (onClick)="newUgyfel()" class="mr-2"></dx-button>
+    <dx-button text="Szerkesztés" (onClick)="editUgyfel()" [disabled]="!selectedRow"></dx-button>
+    <dx-button text="Törlés" (onClick)="deleteUgyfel()" [disabled]="!selectedRow" class="ml-2"></dx-button>
+
+    <dx-data-grid [dataSource]="ugyfelek" (onSelectionChanged)="selectedRow = $event.selectedRowsData[0]"
+        [selection]="{ mode: 'single' }" [columns]="['nev', 'email', 'telefonszam']" class="mt-4"></dx-data-grid>
+</div>
+
+<app-ugyfel-editor [visible]="popupVisible" [ugyfel]="szerkesztendoUgyfel" (closed)="popupVisible = false"
+    (saved)="onUgyfelSaved()"></app-ugyfel-editor>

@@ -15,9 +15,9 @@ export interface UgyfelSharedDto {
 })
 @Injectable({ providedIn: 'root' })
 export class UgyfelSharedService {
-  private readonly baseUrl = 'http://localhost:5001/api/Ugyfel';
+  protected readonly baseUrl = 'http://localhost:5001/api/Ugyfel';
 
-  constructor(private http: HttpClient) { }
+  constructor(protected http: HttpClient) { }
 
   getAll(): Observable<UgyfelSharedDto[]> {
     return this.http.get<UgyfelSharedDto[]>(this.baseUrl);
