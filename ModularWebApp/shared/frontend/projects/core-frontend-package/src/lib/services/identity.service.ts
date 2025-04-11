@@ -21,9 +21,11 @@ export class IdentityService {
 
   constructor(private http: HttpClient) {
     const existingToken = this.getToken();
-    if (existingToken) {
+    if (existingToken && this.isTokenValid(existingToken)) {
       this.updateClaimsFromToken(existingToken);
       this.startRenewTimer();
+    } else {
+      this.logout();
     }
   }
 
@@ -59,6 +61,21 @@ export class IdentityService {
     this.permissionsSubject.next([]);
     this.usernameSubject.next(null);
     this.stopRenewTimer();
+  }
+
+  private isTokenValid(token: string): boolean {
+    try {
+      const payload = token.split('.')[1];
+      const decoded = JSON.parse(atob(payload));
+
+      const exp = decoded['exp'];
+      if (!exp) return false;
+
+      const now = Math.floor(Date.now() / 1000);
+      return exp > now;
+    } catch {
+      return false;
+    }
   }
 
   private updateClaimsFromToken(token: string): void {
