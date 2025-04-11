@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 
 import { CoreFrontendModule, ErrorService } from 'core-frontend-package';
 import { UiFrontendModule } from 'ui-frontend-package';
+import { StartPageComponent } from './components/startpage/startpage.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    StartPageComponent
   ],
   imports: [
     BrowserModule,

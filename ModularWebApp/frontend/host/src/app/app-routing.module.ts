@@ -1,6 +1,7 @@
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { StartPageComponent } from './components/startpage/startpage.component';
 
 const routes: Routes = [
   {
@@ -30,7 +31,15 @@ const routes: Routes = [
         exposedModule: './Module'
       }).then(m => m.SzerzodeskezeloModule)
   },
-  { path: '**', redirectTo: '' }
+  {
+    path: '',
+    component: StartPageComponent, // ← kezdő oldal
+    pathMatch: 'full'
+  },
+  {
+    path: '**',
+    component: StartPageComponent // ← fallback oldal
+  }
 ];
 
 @NgModule({
