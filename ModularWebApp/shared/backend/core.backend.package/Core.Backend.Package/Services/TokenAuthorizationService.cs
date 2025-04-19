@@ -24,7 +24,7 @@ public class TokenAuthorizationService : ITokenAuthorizationService
             RoleClaimType = ClaimTypes.Role,
             IssuerSigningKey = GetPublicKey(),
             ValidateIssuer = true,
-            ValidIssuer = "identity-api.local",
+            ValidIssuer = "identity-api",
             ValidateAudience = true,
             ValidAudience = "all-services",
             ClockSkew = TimeSpan.Zero

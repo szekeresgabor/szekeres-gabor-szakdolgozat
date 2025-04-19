@@ -28,7 +28,7 @@ public class TokenService(IConfiguration config) : ITokenService
         var creds = new SigningCredentials(new RsaSecurityKey(rsa), SecurityAlgorithms.RsaSha256);
 
         var token = new JwtSecurityToken(
-            issuer: "identity-api.local",
+            issuer: "identity-api",
             audience: "all-services",
             claims: claims,
             expires: DateTime.UtcNow.AddMinutes(60),
